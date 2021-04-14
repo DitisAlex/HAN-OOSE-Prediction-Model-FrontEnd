@@ -1,2 +1,4 @@
-*.asta.lock
+# IDE
+.vscode
+.idea
 
