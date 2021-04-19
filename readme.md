@@ -1,6 +1,6 @@
 # Flask REST API Onderzoek
 
-Deze readme zal uitleggen hoe je een REST API ontwikkelt met behulp van [Flask](https://flask.palletsprojects.com). Alle informatie uit deze readme is terug te vinden in de officiele Flask documentatie:
+Deze readme zal uitleggen hoe je een REST API ontwikkelt met behulp van [Flask](https://flask.palletsprojects.com). Tevens is dit project een opzet voor het "echte" werk, hierop dient voort gebouwd te worden. Alle informatie uit deze readme is terug te vinden in de officiele Flask documentatie:
 
 - https://flask.palletsprojects.com/en/1.1.x/installation/
 - https://flask.palletsprojects.com/en/1.1.x/quickstart/
@@ -74,7 +74,7 @@ In dit project is er besloten om het projectstructuur op basis van features in t
 - `instance/`: een map waarin configuration secrets en het database bestand staan. Deze map mag **niet** gecommit worden naar git.
 - `tests/`: een map waarin alle unittests staan.
 - `venv/`: een Python virtual environment waarin Flask en andere dependencies geinstalleerd zijn.
-- `setup.py` en `MANIFEST.in`: bestanden die Python nodig heeft om dit project op een machine te installeren.
+- `setup.py` en `MANIFEST.in`: bestanden die Python nodig heeft om dit project op een machine te installeren, [hier](https://flask.palletsprojects.com/en/1.1.x/tutorial/install/)
 - `.git` en `.gitignore`: git versiebeheer bestanden.
 
   ### **.gitignore**
