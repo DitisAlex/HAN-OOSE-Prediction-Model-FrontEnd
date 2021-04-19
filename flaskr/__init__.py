@@ -28,7 +28,7 @@ def create_app(test_config=None):
         pass
 
     # Initialize db
-    from flaskr import db
+    from .core import db
     db.init_app(app)
 
     # Register routes
