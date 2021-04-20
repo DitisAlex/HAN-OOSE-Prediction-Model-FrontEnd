@@ -8,10 +8,17 @@ con.execute("DROP TABLE weather")
 
 # Create tables
 cur.execute('''CREATE TABLE IF NOT EXISTS users
-               (signupDate text, name text, password text, isAdmin integer)''')
+               (signupDate  text    NOT NULL, 
+               name         text    NOT NULL, 
+               password     text    NOT NULL, 
+               isAdmin      integer)''')
 
 cur.execute('''CREATE TABLE IF NOT EXISTS weather
-               (date text,temperature real, cloud integer, wind real, airPressure integer)''')
+               (date        text     NOT NULL,
+               temperature  real     NOT NULL, 
+               cloud        integer  NOT NULL, 
+               wind         real     NOT NULL, 
+               pressure     integer  NOT NULL)''')
 
 # Insert data
 cur.execute("INSERT INTO users VALUES (datetime('now'), 'rowan','password',1)")
@@ -67,6 +74,17 @@ cur.execute(
 
 # Save (commit) the changes
 con.commit()
+
+# Print the inserted data
+print("Users:")
+for row in cur.execute('SELECT * FROM users'):
+    print(row)
+
+print("")
+
+print("Weather:")
+for row in cur.execute('SELECT * FROM weather'):
+    print(row)
 
 # Close the connection
 con.close()
