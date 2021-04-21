@@ -1,6 +1,9 @@
 *.asta.lock
 .vscode
 
+#NPM files
+/node_modules
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
