@@ -20,6 +20,7 @@ import Logout from './Logout';
 import AdminPage from './AdminPage';
 import DataPageA from './DataPageA';
 import DataPageB from './DataPageB';
+import NavbarComponent from './NavbarComponent';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -32,47 +33,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Navbar color="dark" dark expand="md">
-                    <NavbarBrand>Prediction Model</NavbarBrand>
-                    <Nav className="container-fluid" navbar>
-                        <NavItem>
-                            <Link to="/">
-                                <NavLink>DataA</NavLink>
-                            </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to="/data">
-                                <NavLink>DataB</NavLink>
-                            </Link>
-                        </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Models
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <Link to="/">
-                                    <DropdownItem>
-                                    DataA
-                                    </DropdownItem>
-                                </Link>
-                                <Link to="/data">
-                                    <DropdownItem>
-                                    DataB
-                                    </DropdownItem>
-                                </Link>
-                                <DropdownItem divider />
-                                    <DropdownItem>
-                                        Exit
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
-                        <NavItem className="ml-auto">
-                        <Link to="/login">
-                                <NavLink>Login</NavLink>
-                            </Link>
-                        </NavItem>
-                    </Nav>
-                </Navbar>
+                <NavbarComponent/>
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={DataPageA} />
