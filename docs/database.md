@@ -67,3 +67,13 @@ The Grid table is taken from the database on the Raspberry and contains the data
 | S2   | REAL               | :x:      | :x:                |
 | S3   | REAL               | :x:      | :x:                |
 | PF1  | REAL               | :x:      | :x:                |
+
+### prediction_data
+
+The prediction data table stores the prediction made by the AI model. The `predicted_on` is the date on which the production was performed, the `predicted_date` is the date for which the prodiction was made and `prediction` is the prediction.
+
+| NAME           | DATA TYPE | NOT NULL           |
+| -------------- | --------- | ------------------ |
+| predicted_on   | text      | :white_check_mark: |
+| predicted_date | text      | :white_check_mark: |
+| prediction     | real      | :white_check_mark: |
