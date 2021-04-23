@@ -25,7 +25,7 @@ def seedTablesTest():
 def createTables():
     cur.execute('''CREATE TABLE IF NOT EXISTS users
                 (sign_up_date    TEXT        NOT NULL, 
-                name             TEXT        NOT NULL, 
+                username             TEXT        NOT NULL, 
                 password         TEXT        NOT NULL, 
                 isAdmin          INTEGER)''')
 
