@@ -1,5 +1,8 @@
-*.asta.lock
+# IDE
+.idea
 .vscode
+*.asta.lock
+
 
 #NPM files
 /node_modules

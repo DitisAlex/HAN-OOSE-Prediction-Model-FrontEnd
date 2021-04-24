@@ -11,7 +11,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'modbusData.db'),
+        DATABASE=os.path.join(app.instance_path, 'database.db'),
     )
 
     if test_config is None:
@@ -34,8 +34,8 @@ def create_app(test_config=None):
     # Register routes
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
-    @app.route('/test')
+    @app.route('/')
     def test():
-        return 'test works!'
+        return 'flask werkt!'
 
     return app

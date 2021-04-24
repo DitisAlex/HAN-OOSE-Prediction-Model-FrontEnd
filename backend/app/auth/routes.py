@@ -1,6 +1,6 @@
 from flask import request, abort
-from flaskr.auth import bp
-from flaskr.auth.controller import AuthController
+from app.auth import bp
+from app.auth.controller import AuthController
 
 
 @bp.route('/login', methods=['POST'])

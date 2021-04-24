@@ -21,13 +21,14 @@ def close_db(e=None):
     if db is not None:
         db.close()
 
-
-@click.command('get-tables')
+# DB Test command
+# After flask is running use: flask test-db
+@click.command('test-db')
 @with_appcontext
 def get_tables():
     """Get tables."""
     db = get_db()
-    query = "SELECT * FROM PV"
+    query = "SELECT * FROM weather;"
     df = pd.read_sql_query(query, db)
 
     print(df)
