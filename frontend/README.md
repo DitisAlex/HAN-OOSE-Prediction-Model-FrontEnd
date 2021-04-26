@@ -1,135 +1,70 @@
-# React Boilerplate Front-End Code
+# Getting Started with Create React App
 
-In deze README wordt kort uitlegd wat er allemaal in de huidige boilerplate gemaakt is, en hoe je deze boilerplate kunt gebruiken.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Installatie:
-De gehele mappenstructuur is al gemaakt, aangezien we in de .gitignore alle node_modules negeren moeten we wel nog de juiste dependencies downloaden. Dit kan als volgt:
-1. Verwijs naar de frontend folder
-    ```bash
-    cd frontend
-    ```
-    Als je dit correct hebt gedaan zie je nu in je terminal ongeveer het volgende:  
-    `\web-interface-prediction-model\frontend>` 
+## Available Scripts
 
-2. Installeer de benodigde dependencies
-    ```
-    npm install 
-    ```
+In the project directory, you can run:
 
-3. Start de development server
-    ```
-    npm start
-    ```
-    
-Als alles goed is gelukt wordt er nu op localhost:3000 een web pagina gerunned van de boilerplate.
-> Source can be found here: https://reactjs.org/docs/create-a-new-react-app.html
+### `npm start`
 
-## Project Layout:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-De huidige projectstructuur bestaat uit meerdere mappen voor meerdere doeleinden, onderanderen `css` voor alle css. `components` voor alle react componenten.
-```bash
-/path/to/your/project
-├── src/
-│   ├── index.js
-│   ├── serverCommunications.js
-|   ├── components/             
-|   |   ├── App.jsx
-|   |   ├── AdminPage.jsx 
-|   |   ├── DataPageA.jsx
-|   |   └── DataPageB.jsx
-|   |   └── Login.jsx
-|   |   └── Logout.jsx
-|   └── css/
-|       └── bootstrap.css
-├── public/
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-|   └── manifest.json
-├── node_modules/
-├── package-lock.json
-├── package.json
-├── .git
-└── .gitignore
-```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-- `index.js`: rendered de React.DOM en roept de App.jsx file aan samen met andere css bestanden.
-- `serverCommunication.js`: bevat alle communicatie met de server zoals API calls.
-- `components/`: een map voor alle react componenten.
-- `App.jsx`: main component voor de applicatie die alle andere .jsx componenten aanroept.
-- `public/`: automatisch gegenereerde map voor de HTML en favicon.
-- `.git` en `.gitignore`: git versiebeheer bestanden.
+### `npm test`
 
-## Code Examples:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-### State Hook:
-Een hook is een speciale functie waarbij je React state toe kunt voegen aan een functie component.
-### useState:
-#### Login.jsx
-```js
-import React, { useState } from 'react'
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-export default function Login(props){
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    return (
-        <input type="text" id="username" onChange={(e) => setUsername(e.target.value)} value={username}></input>
-        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-    )
-}
-```
-#### Output met console.log bij onChange:
-```
-username = u
-username = us
-username = use
-username = user
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### useEffect:
-Een andere State Hook is de useEffect, deze hook wordt altijd als eerst gerunned, vergelijkbaar met een ComponentDidMount()
-#### Logout.jsx
-```js
-import React, { useEffect } from 'react';
-export default function Logout(props){
-    useEffect(() => {
-        doThisFunction()
-    })
-}
-```
-> For more documentation related to State Hooks, see: https://reactjs.org/docs/hooks-state.html
+### `npm run eject`
 
-### API call:
-#### serverCommunications.js
-```js
-export async function Login(username, password) {
-    const body = {
-        username: username,
-        password: password
-    };
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-    const fetchOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: "include",
-        mode: "cors",
-        body: JSON.stringify(body),
-    };
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-    return fetch(serverFetchBase + `/login`, fetchOptions);
-}
-```
-#### Login.jsx
-```js
-import { Login } from './serverCommunications.js';
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-function handleLogin() {
-    Login(username, password)
-}
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
