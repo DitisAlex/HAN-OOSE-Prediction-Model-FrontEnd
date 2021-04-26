@@ -11,13 +11,16 @@ def seed():
     con.execute("DROP TABLE IF EXISTS users")
     con.execute("DROP TABLE IF EXISTS weather")
     con.execute("DROP TABLE IF EXISTS grid")
+    con.execute("DROP TABLE IF EXISTS prediction_data")
 
     createTables()
 
     # You can comment a table if you don't
     # want to add data into it
+    insertUsers()
     insertWeather()
     insertGrid()
+    insertPredictions()
 
     con.commit()
 
@@ -29,7 +32,7 @@ def seed():
 def createTables():
     cur.execute('''CREATE TABLE IF NOT EXISTS users
                 (sign_up_date    TEXT        NOT NULL, 
-                name             TEXT        NOT NULL, 
+                username             TEXT        NOT NULL, 
                 password         TEXT        NOT NULL, 
                 isAdmin          INTEGER)''')
 
@@ -39,6 +42,11 @@ def createTables():
                 cloud        INTEGER  NOT NULL, 
                 wind         REAL     NOT NULL, 
                 pressure     INTEGER  NOT NULL)''')
+
+    cur.execute('''CREATE TABLE IF NOT EXISTS prediction_data
+                (predicted_on    TEXT    NOT NULL,
+                predicted_date   REAL    NOT NULL,
+                prediction      TEXT    NOT NULL)''')
 
     # (tables from the old database)
     cur.execute('''CREATE TABLE IF NOT EXISTS grid (
@@ -163,6 +171,15 @@ def insertGrid():
         '''INSERT INTO grid  VALUES (19, 1617592251, 233.9, 233.6, 234.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 50.0)''')
     cur.execute(
         '''INSERT INTO grid  VALUES (20, 1617592536, 234.0, 233.7, 234.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 50.0)''')
+
+
+def insertPredictions():
+    cur.execute(
+        '''INSERT INTO prediction_data VALUES ('2021-04-23 9:00:00', '2021-04-21 8:45:14', 2.9)'''
+    )
+    cur.execute(
+        '''INSERT INTO prediction_data VALUES ('2021-04-23 9:00:00', '2021-04-21 9:45:14', 23.2)'''
+    )
 
 
 # Automatically run seed if run (not imported)

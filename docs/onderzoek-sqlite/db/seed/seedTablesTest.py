@@ -11,6 +11,7 @@ def seedTablesTest():
     con.execute("DROP TABLE IF EXISTS users")
     con.execute("DROP TABLE IF EXISTS weather")
     con.execute("DROP TABLE IF EXISTS grid")
+    con.execute("DROP TABLE IF EXISTS prediction_data")
 
     createTables()
 
@@ -24,7 +25,7 @@ def seedTablesTest():
 def createTables():
     cur.execute('''CREATE TABLE IF NOT EXISTS users
                 (sign_up_date    TEXT        NOT NULL, 
-                name             TEXT        NOT NULL, 
+                username             TEXT        NOT NULL, 
                 password         TEXT        NOT NULL, 
                 isAdmin          INTEGER)''')
 
@@ -34,6 +35,11 @@ def createTables():
                 cloud        INTEGER  NOT NULL, 
                 wind         REAL     NOT NULL, 
                 pressure     INTEGER  NOT NULL)''')
+
+    cur.execute('''CREATE TABLE IF NOT EXISTS prediction_data
+                (predicted_on    TEXT    NOT NULL,
+                predicted_date   REAL    NOT NULL,
+                prediction      TEXT    NOT NULL)''')
 
     # (tables from the old database)
     cur.execute('''CREATE TABLE IF NOT EXISTS grid (
