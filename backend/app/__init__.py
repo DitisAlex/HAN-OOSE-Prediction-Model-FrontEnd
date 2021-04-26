@@ -4,7 +4,6 @@ from flask import Flask
 
 # Import routes
 from .auth import bp as auth_bp
-from .database import bp as database_bp
 
 
 def create_app(test_config=None):
@@ -34,7 +33,6 @@ def create_app(test_config=None):
 
     # Register routes
     app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(database.bp, url_prefix='/database')
 
     @app.route('/')
     def test():
