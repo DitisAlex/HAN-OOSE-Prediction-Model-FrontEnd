@@ -35,9 +35,9 @@ def get_old_db():
 
 def close_db(e=None):
     db = g.pop('db', None)
-    db.commit()
 
     if db is not None:
+        db.commit()
         db.close()
 
 # DB Test command

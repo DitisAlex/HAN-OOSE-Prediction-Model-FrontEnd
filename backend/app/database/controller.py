@@ -13,7 +13,6 @@ class DatabaseController:
         rows = cur.fetchall()
 
         for row in rows:
-            # data.append([x for x in row])  # or simply data.append(list(row))
             data.append(list(row))
 
         close_db(db)
@@ -31,3 +30,5 @@ class DatabaseController:
             cur.execute(sql, var)
 
         close_db(db)
+
+        return ""
