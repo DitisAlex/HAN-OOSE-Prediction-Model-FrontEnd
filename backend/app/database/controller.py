@@ -7,28 +7,27 @@ class DatabaseController:
 
     def getGridData(self):
         data = []
-        cur = get_old_db().cursor()
-        cur.execute("SELECT * FROM PV")
+        db = get_old_db()
+        cur = db.cursor()
+        cur.execute("SELECT * FROM PV")  # TODO: only get the new data
         rows = cur.fetchall()
 
         for row in rows:
             # data.append([x for x in row])  # or simply data.append(list(row))
             data.append(list(row))
 
-        close_db()
+        close_db(db)
 
         return rows
 
     def insertGridData(self, data):
-        cur = get_db().cursor()
+        db = get_db()
+        cur = db.cursor()
 
         for row in data:
             sql = "INSERT INTO grid VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            val = (row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],
+            var = (row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],
                    row[10], row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20])
-            cur.execute(sql, val)
-            break
+            cur.execute(sql, var)
 
-        close_db()
-
-        return "Good"
+        close_db(db)

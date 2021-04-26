@@ -10,13 +10,9 @@ def login():
     c = DatabaseController()
 
     try:
-        #            teachers = []
-        #    for teacher in Teacher.objects:
-        #       teachers.append(teacher)
-        #    return jsonify(teachers)
         data = c.getGridData()
         c.insertGridData(data)
 
-        return "Hello world"
+        return "Correctly inserted data"
     except KeyError:  # KeyError = missing key in json
         abort(401, "Invalid data")
