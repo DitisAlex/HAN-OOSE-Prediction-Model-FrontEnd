@@ -5,7 +5,7 @@ from app.database.controller import DatabaseController
 from flask import jsonify
 
 
-@bp.route('/', methods=['GET'])
+@bp.route('/energy', methods=['GET'])
 def login():
     c = DatabaseController()
 
