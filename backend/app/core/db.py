@@ -30,7 +30,7 @@ def close_db(e=None):
 @with_appcontext
 def get_dataz():
     """Get dataz"""
-
+    
     owm = OWM('1a4df9d4817c3d16e92b272d59531753')
     mgr = owm.weather_manager()
     one_call = mgr.one_call(lat=51, lon=5)
