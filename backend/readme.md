@@ -19,7 +19,7 @@ Deze readme zal uitleggen hoe je een REST API ontwikkelt met behulp van [Flask](
    ```
    **Windows**
    ```bash
-   > py -3 -m venv venv
+   > py -3 -m venv .venv
    ```
 2. Activeer het virtuele environment  
    **Linux/Mac**
@@ -28,7 +28,7 @@ Deze readme zal uitleggen hoe je een REST API ontwikkelt met behulp van [Flask](
    ```
    **Windows**
    ```bash
-   > venv\Scripts\activate
+   > .venv\scripts\activate
    ```
 3. Installeer Flask
    ```bash
