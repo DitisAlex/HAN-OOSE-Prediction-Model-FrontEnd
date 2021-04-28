@@ -1,2 +1,5 @@
 Flask
 pandas
+datetime
+numpy
+pyowm
