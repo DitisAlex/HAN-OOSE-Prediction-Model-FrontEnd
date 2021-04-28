@@ -4,6 +4,7 @@ from flask import Flask
 
 # Import routes
 from .auth import bp as auth_bp
+from .energy import bp as energy_bp
 
 
 def create_app(test_config=None):
@@ -12,6 +13,8 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'database.db'),
+        OLD_DATABASE=os.path.join(
+            app.instance_path, 'modbusData.db')
     )
 
     if test_config is None:
@@ -33,9 +36,10 @@ def create_app(test_config=None):
 
     # Register routes
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(energy.bp, url_prefix='/energy')
 
     @app.route('/')
     def test():
-        return 'flask werkt!'
+        return 'Hello world'
 
     return app

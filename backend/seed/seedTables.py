@@ -1,16 +1,17 @@
 # Create database and tables, add initial data
 import sqlite3
 
-con = sqlite3.connect('../databaseTest.db')
+con = sqlite3.connect('../instance/database.db')
 
 cur = con.cursor()
 
 
-def seedTablesTest():
+def seedTables():
     # You can comment a table if you want to keep the data
     con.execute("DROP TABLE IF EXISTS users")
     con.execute("DROP TABLE IF EXISTS weather")
-    con.execute("DROP TABLE IF EXISTS grid")
+    con.execute("DROP TABLE IF EXISTS energy_consumption")
+    con.execute("DROP TABLE IF EXISTS energy_production")
     con.execute("DROP TABLE IF EXISTS prediction_data")
 
     createTables()
@@ -19,7 +20,7 @@ def seedTablesTest():
 
     con.close()
 
-    print("Finished seedTablesTest.py")
+    print("Finished seedTables.py")
 
 
 def createTables():
@@ -44,6 +45,30 @@ def createTables():
     # (tables from the old database)
     cur.execute('''CREATE TABLE IF NOT EXISTS grid (
         [No] INTEGER            PRIMARY KEY AUTOINCREMENT,
+        Time [UNSIGNED BIG INT],
+        V1   REAL,
+        V2   REAL,
+        V3   REAL,
+        I1   REAL,
+        I2   REAL,
+        I3   REAL,
+        P1   REAL,
+        P2   REAL,
+        P3   REAL,
+        Q1   REAL,
+        Q2   REAL,
+        Q3   REAL,
+        S1   REAL,
+        S2   REAL,
+        S3   REAL,
+        PF1  REAL,
+        PF2  REAL,
+        PF3  REAL,
+        F    REAL
+    )''')
+
+    cur.execute('''CREATE TABLE IF NOT EXISTS energy_production  (
+        [No] INTEGER,
         Time [UNSIGNED BIG INT],
         V1   REAL,
         V2   REAL,
