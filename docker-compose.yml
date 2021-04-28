@@ -1,0 +1,28 @@
+version: "3"
+services:
+    backend:
+      container_name: flask-api
+      hostname: flask-api
+      build: ./backend
+      ports:
+          - "5000:5000"
+      volumes:
+        - "./backend:/app"
+    frontend:
+      container_name: react-client
+      hostname: react-client
+      build: ./frontend
+      ports:
+        - "3000:3000"
+      volumes:
+        - "./frontend:/app"
+    # db:
+    #   container_name: mysql-db
+    #   hostname: mysql-db
+    #   image: mysql:5.7
+    #   ports:
+    #     - "3306:3306"
+    #   environment: 
+    #     MYSQL_ROOT_PASSWORD: root
+    #   volumes:
+    #     - "./db:/docker-entrypoint-initdb.d/:ro"
