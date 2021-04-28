@@ -43,8 +43,8 @@ def createTables():
                 prediction      TEXT    NOT NULL)''')
 
     # (tables from the old database)
-    cur.execute('''CREATE TABLE IF NOT EXISTS grid (
-        [No] INTEGER            PRIMARY KEY AUTOINCREMENT,
+    cur.execute('''CREATE TABLE IF NOT EXISTS energy_consumption (
+        [No] INTEGER,
         Time [UNSIGNED BIG INT],
         V1   REAL,
         V2   REAL,

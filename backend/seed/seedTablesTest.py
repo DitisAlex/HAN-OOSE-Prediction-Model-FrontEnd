@@ -44,7 +44,7 @@ def createTables():
 
     # (tables from the old database)
     cur.execute('''CREATE TABLE IF NOT EXISTS grid (
-        [No] INTEGER            PRIMARY KEY AUTOINCREMENT,
+        [No] INTEGER,
         Time [UNSIGNED BIG INT],
         V1   REAL,
         V2   REAL,
