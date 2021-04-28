@@ -5,20 +5,20 @@ from app.energy.controller import EnergyController
 from flask import jsonify
 
 
-@bp.route('/consumption', methods=['GET'])
+@bp.route('/consumption', methods=['POST'])
 def insertConsumption():
     c = EnergyController()
 
     try:
         data = c.getConsumptionData()
-        # c.insertConsumptionData(data)
+        c.insertConsumptionData(data)
 
         return "Correctly inserted consumption data"
     except KeyError:  # KeyError = missing key in json
         abort(401, "Invalid data")
 
 
-@bp.route('/production', methods=['GET'])
+@bp.route('/production', methods=['POST'])
 def insertProduction():
     c = EnergyController()
 

@@ -4,7 +4,7 @@ This project is the web interface build with Python and React for the prediction
 
 ## Folders
 
-The backend can be found inside the `/backend` folder and the frontend can be found in the `/frontend` folder. Documentation and research projects can be found in the `/docs` folder
+The backend can be found inside the `/backend` folder and the frontend can be found in the `/frontend` folder. Documentation and research projects can be found in the `/docs` folder.
 
 ## Links
 

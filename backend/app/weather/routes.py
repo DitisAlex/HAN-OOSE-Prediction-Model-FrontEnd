@@ -5,7 +5,7 @@ from app.weather.controller import WeatherController
 from flask import jsonify
 
 
-@bp.route('/', methods=['GET'])
+@bp.route('', methods=['POST'])
 def getWeather():
     c = WeatherController()
 

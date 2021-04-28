@@ -37,8 +37,8 @@ def create_app(test_config=None):
 
     # Register routes
     app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(energy.bp, url_prefix='/energy')
-    app.register_blueprint(weather.bp, url_prefix='/weather')
+    app.register_blueprint(energy_bp, url_prefix='/energy')
+    app.register_blueprint(weather_bp, url_prefix='/weather')
 
     @app.route('/')
     def test():
