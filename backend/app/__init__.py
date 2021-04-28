@@ -5,6 +5,7 @@ from flask import Flask
 # Import routes
 from .auth import bp as auth_bp
 from .energy import bp as energy_bp
+from .weather import bp as weather_bp
 
 
 def create_app(test_config=None):
@@ -37,6 +38,7 @@ def create_app(test_config=None):
     # Register routes
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(energy.bp, url_prefix='/energy')
+    app.register_blueprint(weather.bp, url_prefix='/weather')
 
     @app.route('/')
     def test():
