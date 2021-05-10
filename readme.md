@@ -2,6 +2,10 @@
 
 This project is the web interface build with Python and React for the prediction model from H@nnwatts for their EV chargers system.
 
+## Installation
+
+You can run the app on you local device if you have Docker installed by running `docker-compose up` in the root of the project.
+
 ## Folders
 
 The backend can be found inside the `/backend` folder and the frontend can be found in the `/frontend` folder. Documentation and research projects can be found in the `/docs` folder.
