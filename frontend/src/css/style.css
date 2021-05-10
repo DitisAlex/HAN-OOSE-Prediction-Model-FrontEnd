@@ -1,0 +1,33 @@
+.root, .App, .container, html, body, .container div { 
+    height:100%; 
+    min-height: 100%;
+}
+
+.filter, .energyContainer {
+    float: left;
+}
+
+.filter {
+    width: 220px;
+    height: 100%;
+    background-color: #F7F7F7;
+    border: 1px solid gray;
+}
+
+.filter h2, .filter form {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.filter form {
+    width: 60%;
+}
+
+.filter form input {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.energyContainer {
+    width: 860px;
+}

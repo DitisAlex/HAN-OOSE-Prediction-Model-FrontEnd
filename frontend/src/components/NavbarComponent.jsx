@@ -31,6 +31,11 @@ export default function NavbarComponent(props){
                                 <NavLink>DataB</NavLink>
                             </Link>
                         </NavItem>
+                        <NavItem>
+                            <Link to="/production">
+                                <NavLink>Production</NavLink>
+                            </Link>
+                        </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 Models

@@ -21,6 +21,7 @@ import AdminPage from './AdminPage';
 import DataPageA from './DataPageA';
 import DataPageB from './DataPageB';
 import NavbarComponent from './NavbarComponent';
+import Production from './Production';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -41,6 +42,7 @@ export default class App extends React.Component {
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/admin" component={AdminPage} />
+                        <Route path="/production" component={Production} />
                     </Switch>
                 </div>
             </div>
