@@ -9,11 +9,11 @@ export default class GraphCards extends Component {
         <Row>
           <IntroCard
             title="Energy consumption"
-            description="View the current, past and future energy consumption in this easy graph."
+            description="On this page you can view the current, past and future energy consumption in this easy graph."
           />
           <IntroCard
             title="Energy production"
-            description="View the current, past and future energy production in this easy graph."
+            description="On this page you can view the current, past and future energy production in this easy graph."
           />
         </Row>
       </Container>
