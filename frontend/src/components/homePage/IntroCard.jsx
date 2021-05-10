@@ -1,16 +1,28 @@
 import React, { Component } from 'react'
 import { Button, Card, CardTitle, CardText, Col } from 'reactstrap'
+import { withRouter } from 'react-router-dom'
 
-export default class IntroCard extends Component {
+class IntroCard extends Component {
   render() {
+    const link = this.props.link
+    const { history } = this.props
+
+    function handleClick() {
+      history.push(link)
+    }
+
     return (
       <Col>
         <Card body>
           <CardTitle>{this.props.title}</CardTitle>
           <CardText>{this.props.description}</CardText>
-          <Button color="primary">Go to graph</Button>
+          <Button onClick={handleClick} color="primary">
+            Go to graph
+          </Button>
         </Card>
       </Col>
     )
   }
 }
+
+export default withRouter(IntroCard)
