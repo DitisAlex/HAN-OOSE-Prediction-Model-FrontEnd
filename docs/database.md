@@ -43,9 +43,34 @@ The weather data saves the data that the system gets from the weather API. These
 | wind        | real      | :white_check_mark: |
 | pressure    | integer   | :white_check_mark: |
 
-### Grid
+### Energy consumption
 
-The Grid table is taken from the database on the Raspberry and contains the data from the grid. The data is in it's original format like on the old project. The `[No]` column is a sort id column and auto increments.
+The energy consumption table is taken from the database on the Raspberry and contains the data from the grid about energy consumption. The data is in it's original format like on the old project. The `[No]` column is a sort id column and auto increments.
+
+| NAME | DATA TYPE          | NOT NULL | PRIMARY KEY        |
+| ---- | ------------------ | -------- | ------------------ |
+| [No] | integer            | :x:      | :white_check_mark: |
+| Time | [unsigned big int] | :x:      | :x:                |
+| V1   | REAL               | :x:      | :x:                |
+| V2   | REAL               | :x:      | :x:                |
+| V3   | REAL               | :x:      | :x:                |
+| I1   | REAL               | :x:      | :x:                |
+| I2   | REAL               | :x:      | :x:                |
+| I3   | REAL               | :x:      | :x:                |
+| P1   | REAL               | :x:      | :x:                |
+| P2   | REAL               | :x:      | :x:                |
+| P3   | REAL               | :x:      | :x:                |
+| Q1   | REAL               | :x:      | :x:                |
+| Q2   | REAL               | :x:      | :x:                |
+| Q3   | REAL               | :x:      | :x:                |
+| S1   | REAL               | :x:      | :x:                |
+| S2   | REAL               | :x:      | :x:                |
+| S3   | REAL               | :x:      | :x:                |
+| PF1  | REAL               | :x:      | :x:                |
+
+### Energy production
+
+The energy production table is taken from the database on the Raspberry and contains the data from the grid about energy production. The data is in it's original format like on the old project. The `[No]` column is a sort id column and auto increments.
 
 | NAME | DATA TYPE          | NOT NULL | PRIMARY KEY        |
 | ---- | ------------------ | -------- | ------------------ |
