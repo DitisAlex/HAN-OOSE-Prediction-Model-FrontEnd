@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { graphsReducer } from './cards/reducer'
+import { graphsReducer } from './graphs/reducer'
 
 const rootReducer = combineReducers({
   graphs: graphsReducer,
