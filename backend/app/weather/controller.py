@@ -1,5 +1,4 @@
 from app.core.db import get_db, close_db
-import json
 
 from datetime import datetime, timedelta, timezone
 from pandas import pandas as pd
@@ -12,7 +11,7 @@ class WeatherController:
     def __init__(self):
         pass
 
-    def setWeatherData(self):
+    def getWeatherData(self):
         # Setup weather
         owm = OWM('1a4df9d4817c3d16e92b272d59531753')
         mgr = owm.weather_manager()
@@ -44,21 +43,3 @@ class WeatherController:
         close_db(db)
 
         return ""
-
-    def getWeatherData(self):   
-        
-        data = []
-        db = get_db()
-        cur = db.cursor()
-        cur.execute("SELECT * FROM Weather LIMIT 24") # get last 24 hours
-
-        rows = cur.fetchall()
-
-        data = []
-        
-        for row in rows:
-            data.append([x for x in row])
-        
-        close_db(db)
-
-        return json.dumps(data)
