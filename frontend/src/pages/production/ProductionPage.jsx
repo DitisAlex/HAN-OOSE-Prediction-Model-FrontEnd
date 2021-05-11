@@ -16,7 +16,7 @@ export default function ProductionPage(props){
                     <div className="w-75 mx-auto h5">
                         <CustomInput className="mt-5" type="switch" id="exampleCustomSwitch" name="customSwitch" label="Predictive Data" />
                         <CustomInput className="mt-5" type="select" id="exampleCustomSelect" name="customSelect">
-                            <option value="0">Prediction Time Ahead</option>
+                            <option value="">Prediction Time Ahead</option>
                             <option value="1">1 Hour</option>
                             <option value="2">2 Hours</option>
                             <option value="3">3 Hours</option>
