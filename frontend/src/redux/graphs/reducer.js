@@ -1,6 +1,9 @@
 import * as types from './types'
 
-const INITIAL_STATE = {}
+const INITIAL_STATE = {
+  production: {},
+  consumption: {},
+}
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -9,4 +12,4 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export const authReducer = reducer
+export const graphsReducer = reducer
