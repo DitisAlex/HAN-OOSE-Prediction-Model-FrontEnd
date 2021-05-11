@@ -4,7 +4,6 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Logout from './pages/auth/Logout'
 import AdminPage from './pages/admin/AdminPage'
-import ProductionPage from './pages/production/ProductionPage'
 import Production from './pages/production/Production'
 import Navbar from './components/navBar/Navbar'
 
@@ -26,7 +25,6 @@ export default class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <Route path="/admin" component={AdminPage} />
-            <Route path="/consumption" component={ProductionPage} />
             <Route path="/production" component={Production} />
           </Switch>
         </div>
