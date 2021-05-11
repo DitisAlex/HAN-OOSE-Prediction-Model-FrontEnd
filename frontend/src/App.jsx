@@ -5,6 +5,7 @@ import Login from './pages/auth/Login'
 import Logout from './pages/auth/Logout'
 import AdminPage from './pages/admin/AdminPage'
 import ProductionPage from './pages/production/ProductionPage'
+import ConsumptionPage from './pages/consumption/ConsumptionPage'
 import Navbar from './components/navBar/Navbar'
 
 import HomePage from './pages/homePage/HomePage'
@@ -26,6 +27,7 @@ export default class App extends React.Component {
             <Route path="/logout" component={Logout} />
             <Route path="/admin" component={AdminPage} />
             <Route path="/production" component={ProductionPage} />
+            <Route path="/consumption" component={ConsumptionPage} />
           </Switch>
         </div>
       </Router>
