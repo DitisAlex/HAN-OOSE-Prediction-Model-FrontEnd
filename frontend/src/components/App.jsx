@@ -21,7 +21,7 @@ import AdminPage from './AdminPage';
 import DataPageA from './DataPageA';
 import DataPageB from './DataPageB';
 import NavbarComponent from './NavbarComponent';
-import Production from './Production';
+import Production from './pages/production/Production';
 
 export default class App extends React.Component {
     constructor(props) {
