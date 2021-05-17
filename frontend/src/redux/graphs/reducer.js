@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.FETCHED_CONSUMPTION:
-      return {...state, text: action.payload}
+      return {...state, consumption: action.payload}
     default:
       return state
   }
