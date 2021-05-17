@@ -15,22 +15,24 @@ def get_db():
     if 'db' not in g:
         g.db = sqlite3.connect(
             current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
+            detect_types=sqlite3.PARSE_DECLTYPES,timeout=10
         )
         g.db.row_factory = sqlite3.Row
 
     return g.db
 
 
-def get_old_db():
-    if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['OLD_DATABASE'],
+def get_rpi_db():
+    #TODO: Pull data from Raspberry Pi! For now we mock this using modbusData.db...
+
+    if 'rpi_db' not in g:
+        g.rpi_db = sqlite3.connect(
+            current_app.config['RPI_DATABASE'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
-        g.db.row_factory = sqlite3.Row
+        g.rpi_db.row_factory = sqlite3.Row
 
-    return g.db
+    return g.rpi_db
 
 
 def close_db(e=None):
@@ -40,21 +42,49 @@ def close_db(e=None):
         db.commit()
         db.close()
 
-# DB Test command
-# After flask is running use: flask test-db
+def close_rpi_db(e=None):
+    db = g.pop('rpi_db', None)
 
+    if db is not None:
+        db.commit()
+        db.close()
 
-@click.command('test-db')
+# Clear existing data and create new empty tables.
+@click.command('init-db')
 @with_appcontext
-def get_tables():
+def init_db_command():
+    db = get_db()
+
+    with current_app.open_resource("schema.sql", "rb") as f:
+        db.executescript(f.read().decode("utf8"))
+
+    click.echo('Initialized the database.') 
+
+# Insert test data into db.
+@click.command('insert-test-data')
+@with_appcontext
+def insert_test_data_command():
+    db = get_db()
+
+    with current_app.open_resource("test-data.sql", "rb") as f:
+        db.executescript(f.read().decode("utf8"))
+    
+    click.echo('Inserted test data.')
+
+@click.command('show-table')
+@click.argument('table')
+@with_appcontext
+def show_db_command(table):
     """Get tables."""
     db = get_db()
-    query = "SELECT * FROM weather;"
+    query = "SELECT * FROM %s;"%table
     df = pd.read_sql_query(query, db)
 
     print(df)
 
-
 def init_app(app):
     app.teardown_appcontext(close_db)
-    app.cli.add_command(get_tables)
+    app.teardown_appcontext(close_rpi_db)
+    app.cli.add_command(init_db_command)
+    app.cli.add_command(insert_test_data_command)
+    app.cli.add_command(show_db_command)
