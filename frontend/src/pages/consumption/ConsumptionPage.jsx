@@ -34,11 +34,51 @@ function ConsumptionPageUI(props) {
         <div className="consumption-page">
             <h1 className="text-center mt-5">Energie Consumption</h1>
             <div className="d-flex flex-row">
-                <Line
-                    data={data}
-                    width={100}
-                    height={50}
-                />
+                <div>
+                    <div className="w-75 border mx-auto my-5">
+                        <Line
+                            data={data}
+                            width={100}
+                            height={50}
+                        />
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                </div>
+                <div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                </div>
+                <div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                    <div className="w-75 border mx-auto my-5">
+                        <h3 className="text-center my-3">V1</h3>
+                        <img class="w-100" src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png" alt=""></img>
+                    </div>
+                </div>
             </div>
         </div>
     )

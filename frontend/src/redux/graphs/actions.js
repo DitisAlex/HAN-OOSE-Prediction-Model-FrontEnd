@@ -18,7 +18,6 @@ export const fetchConsumption = () => (dispatch) => {
     //     return response.json()
     // })
     .then((response) => {
-        console.log(response)
         dispatch({
             type: types.FETCHED_CONSUMPTION,
             payload: test_data,
