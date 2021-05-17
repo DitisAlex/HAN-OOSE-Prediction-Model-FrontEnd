@@ -1,10 +1,7 @@
 import * as types from './types'
-const port = 5000;
-const serverHostname = `${window.location.hostname}:${port}`;
-const serverFetchBase = `${window.location.protocol}//${serverHostname}`;
 
 export const fetchConsumption = () => (dispatch) => {
-    let url = 'http://localhost:5000/';
+    let url = '/';
 
     fetch(url, {
         method: 'GET',
@@ -12,14 +9,14 @@ export const fetchConsumption = () => (dispatch) => {
             'Content-Type': 'application/json',
         },
     })
-    .then((response) => {
-        return response.json()
-    })
+    // .then((response) => {
+    //     return response.json()
+    // })
     .then((response) => {
         console.log(response)
         dispatch({
             type: types.FETCHED_CONSUMPTION,
-            payload: response,
+            payload: "test",
         })
     }).catch((err) => {
         console.log('Failed to fetch consumption data', err)
