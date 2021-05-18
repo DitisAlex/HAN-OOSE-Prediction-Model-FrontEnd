@@ -1,28 +1,51 @@
 import * as types from './types'
 
 let test_data = {
-    labels: ["10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM"],
-    values: [8, 10, 15, 13, 17, 18, 22, 19]
+  labels: ['10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM'],
+  values: [8, 10, 15, 13, 17, 18, 22, 19],
 }
 
 export const fetchConsumption = () => (dispatch) => {
-    let url = '/';
+  let url = '/'
 
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     // .then((response) => {
     //     return response.json()
     // })
     .then((response) => {
-        dispatch({
-            type: types.FETCHED_CONSUMPTION,
-            payload: test_data,
-        })
-    }).catch((err) => {
-        console.log('Failed to fetch consumption data', err)
+      dispatch({
+        type: types.FETCHED_CONSUMPTION,
+        payload: test_data,
+      })
+    })
+    .catch((err) => {
+      console.log('Failed to fetch consumption data', err)
+    })
+}
+
+export const fetchProduction = () => (dispatch) => {
+  let url = '/production'
+
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    // .then((response) => response.json())
+    .then((response) => {
+      dispatch({
+        type: types.FETCHED_PRODUCTION,
+        payload: test_data,
+        // payload: response,
+      })
+    })
+    .catch((err) => {
+      console.log('Failed to fetch production data', err)
     })
 }
