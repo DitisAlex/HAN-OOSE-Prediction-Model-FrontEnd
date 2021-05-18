@@ -23,3 +23,24 @@ export const fetchConsumption = () => {
             })
     }
 }
+
+export const fetchProduction = () => {
+    let url = '/production'
+
+    return (dispatch) =>
+        fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((json) => {
+                return dispatch({
+                    type: types.FETCHED_PRODUCTION,
+                    payload: json,
+                })
+            })
+            .catch((err) => {
+                console.log('Failed to fetch production data', err)
+            })
+}

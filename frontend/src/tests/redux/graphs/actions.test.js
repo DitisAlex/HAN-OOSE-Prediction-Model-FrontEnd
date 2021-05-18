@@ -9,10 +9,6 @@ const mockStore = createMockStore(mws)
 const store = mockStore({})
 
 describe('Graphs actions', () => {
-  beforeEach(() => {
-    store.clearActions()
-  })
-
   it('Dispatches FETCHED_CONSUMPTION after fetching consumption data', () => {
     expect.assertions(2)
     const mJson = {
