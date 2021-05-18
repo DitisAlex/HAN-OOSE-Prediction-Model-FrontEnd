@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Chart, Line } from 'react-chartjs-2'
 
@@ -33,80 +34,50 @@ function ProductionUI(props) {
   }, [values, labels])
 
   return (
-    <div className="production-page">
-      <h1 className="text-center mt-5">Energie Production</h1>
-      <div className="d-flex flex-row">
-        <div>
+    <div className="production-page container">
+      <div class="row">
+        <div className="col-3 filter bg-light">
+          <h2 className="m-1">Filter</h2>
+          <Form className="m-1 productionForm">
+            <FormGroup>
+              <Label for="hours">Hours</Label>
+              <Input
+                type="email"
+                name="email"
+                id="hours"
+                className="border border-1 rounded"
+                placeholder="Hours to show"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="time">Time</Label>
+              <Input
+                type="text"
+                name="time"
+                id="time"
+                className="border border-1 rounded"
+                placeholder="Time"
+              />
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="checkbox"
+                  id="prediction"
+                  className="border border-1 rounded"
+                />{' '}
+                Prediction
+              </Label>
+            </FormGroup>
+            <Button>Submit</Button>
+          </Form>
+        </div>
+        <div className="col-9 energyContainer">
+          <h1>Energy production</h1>
+          <p>On this page you can see the enrgy production</p>
+
           <div className="w-75 border mx-auto my-5">
             <Line data={data} width={100} height={50} />
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-        </div>
-        <div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-        </div>
-        <div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
           </div>
         </div>
       </div>
