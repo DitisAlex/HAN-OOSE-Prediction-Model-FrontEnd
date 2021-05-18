@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Chart, Line } from 'react-chartjs-2'
 
@@ -34,53 +34,42 @@ function ProductionUI(props) {
   }, [values, labels])
 
   return (
-    <div className="production-page container">
-      <div class="row">
-        <div className="col-3 filter bg-light">
-          <h2 className="m-1">Filter</h2>
-          <Form className="m-1 productionForm">
-            <FormGroup>
-              <Label for="hours">Hours</Label>
-              <Input
-                type="email"
-                name="email"
-                id="hours"
-                className="border border-1 rounded"
-                placeholder="Hours to show"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="time">Time</Label>
-              <Input
-                type="text"
-                name="time"
-                id="time"
-                className="border border-1 rounded"
-                placeholder="Time"
-              />
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="checkbox"
-                  id="prediction"
-                  className="border border-1 rounded"
-                />{' '}
-                Prediction
-              </Label>
-            </FormGroup>
-            <Button>Submit</Button>
-          </Form>
-        </div>
-        <div className="col-9 energyContainer">
-          <h1>Energy production</h1>
-          <p>On this page you can see the enrgy production</p>
+    <div className="consumption-page">
+      <div className="d-flex flex-row my-5">
+        <div className="w-50 border ml-auto mr-5">
+          <h3 className="text-center my-3">Energy Production</h3>
 
           <div className="w-75 border mx-auto my-5">
             <Line data={data} width={100} height={50} />
           </div>
         </div>
+        <div className="w-25 border ml-5 mr-auto">
+          <h3 className="text-center my-3">Settings</h3>
+          <hr />
+          <div className="w-75 mx-auto h5">
+            <CustomInput
+              className="mt-5"
+              type="switch"
+              id="exampleCustomSwitch"
+              name="customSwitch"
+              label="Predictive Data"
+            />
+            <CustomInput
+              className="mt-5"
+              type="select"
+              id="exampleCustomSelect"
+              name="customSelect"
+            >
+              <option value="">Prediction Time Ahead</option>
+              <option value="1">1 Hour</option>
+              <option value="2">2 Hours</option>
+              <option value="3">3 Hours</option>
+              <option value="4">4 Hours</option>
+            </CustomInput>
+          </div>
+        </div>
       </div>
+      <hr />
     </div>
   )
 }
