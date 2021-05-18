@@ -1,9 +1,7 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -12,7 +10,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from 'reactstrap'
 
 export default function NavbarComponent(props) {
@@ -21,28 +18,28 @@ export default function NavbarComponent(props) {
       <NavbarBrand>Prediction Model</NavbarBrand>
       <Nav className="container-fluid" navbar>
         <NavItem>
-          <Link to="/">
-            <NavLink>Home</NavLink>
+          <Link to="/" className="text-light">
+            Home
           </Link>
         </NavItem>
 
         <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret>
+          <DropdownToggle nav caret className="text-light">
             Models
           </DropdownToggle>
 
           <DropdownMenu right>
-            <Link to="/">
-              <DropdownItem>DataA</DropdownItem>
+            <Link to="/consumption" className="text-light">
+              <DropdownItem>Consumption data</DropdownItem>
             </Link>
-            <Link to="/data">
-              <DropdownItem>DataB</DropdownItem>
+            <Link to="/production" className="text-light">
+              <DropdownItem>Production data</DropdownItem>
             </Link>
           </DropdownMenu>
         </UncontrolledDropdown>
         <NavItem className="ml-auto">
-          <Link to="/login">
-            <NavLink>Login</NavLink>
+          <Link to="/login" className="text-light">
+            Login
           </Link>
         </NavItem>
       </Nav>

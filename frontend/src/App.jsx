@@ -4,7 +4,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Logout from './pages/auth/Logout'
 import AdminPage from './pages/admin/AdminPage'
-import ProductionPage from './pages/production/ProductionPage'
+import { ProductionPage } from './pages/production/ProductionPage'
 import { ConsumptionPage } from './pages/consumption/ConsumptionPage'
 import Navbar from './components/navBar/Navbar'
 
