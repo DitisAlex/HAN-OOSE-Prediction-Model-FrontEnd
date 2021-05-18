@@ -5,24 +5,21 @@ let test_data = {
     values: [8, 10, 15, 13, 17, 18, 22, 19]
 }
 
-export const fetchConsumption = () => (dispatch) => {
-    let url = '/';
+export const fetchConsumption = () => {
+    let url = '/consumption'
 
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    // .then((response) => {
-    //     return response.json()
-    // })
-    .then((response) => {
-        dispatch({
-            type: types.FETCHED_CONSUMPTION,
-            payload: test_data,
+    return (dispatch) => {
+        return fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
-    }).catch((err) => {
-        console.log('Failed to fetch consumption data', err)
-    })
+            .then((res) => res.json())
+            .then((json) => {
+                return dispatch({
+                    type: types.FETCHED_CONSUMPTION,
+                    payload: json,
+                })
+            })
+    }
 }
