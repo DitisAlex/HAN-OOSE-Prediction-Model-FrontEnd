@@ -9,6 +9,10 @@ const mockStore = createMockStore(mws)
 const store = mockStore({})
 
 describe('Graphs actions', () => {
+  beforeEach(() => {
+    store.clearActions()
+  })
+
   it('Dispatches FETCHED_CONSUMPTION after fetching consumption data', () => {
     expect.assertions(2)
     const mJson = {
@@ -51,6 +55,55 @@ describe('Graphs actions', () => {
     return store.dispatch(actionTypes.fetchConsumption()).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
       expect(global.fetch).toBeCalledWith('/consumption', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    })
+  })
+
+  it('Dispatches FETCHED_PRODUCTION after fetching production data', () => {
+    expect.assertions(2)
+    const mJson = {
+      labels: [
+        '10AM',
+        '11AM',
+        '12AM',
+        '1PM',
+        '2PM',
+        '3PM',
+        '4PM',
+        '5PM',
+        '6PM',
+      ],
+      values: [8, 10, 15, 13, 17, 18, 22, 19],
+    }
+    const mResponse = { json: jest.fn().mockResolvedValueOnce(mJson) }
+    global.fetch = jest.fn().mockResolvedValueOnce(mResponse)
+
+    const expectedActions = [
+      {
+        type: types.FETCHED_PRODUCTION,
+        payload: {
+          labels: [
+            '10AM',
+            '11AM',
+            '12AM',
+            '1PM',
+            '2PM',
+            '3PM',
+            '4PM',
+            '5PM',
+            '6PM',
+          ],
+          values: [8, 10, 15, 13, 17, 18, 22, 19],
+        },
+      },
+    ]
+
+    return store.dispatch(actionTypes.fetchProduction()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions)
+      expect(global.fetch).toBeCalledWith('/production', {
         headers: {
           'Content-Type': 'application/json',
         },
