@@ -88,3 +88,31 @@ describe('Graphs actions', () => {
   })
   ```
   Om dit probleem op te lossen kun je een eenvoudige beforeEach bovenaan de test initialiseren, deze wist alle actions met `store.clearActions()`
+
+  ## Hoe werkt reducers.test.js?
+  ### Setup:
+  ```js
+  import { graphsReducer } from '../../../redux/graphs/reducer'
+  import * as types from '../../../redux/graphs/types'
+  ```
+  Importeer je types & reducers
+
+  ### Test:
+  ```js
+  const data = {
+    labels: ['10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM'],
+    values: [8, 10, 15, 13, 17, 18, 22, 19],
+  }
+
+    it('Should handle FETCHED_CONSUMPTION', () => {
+    const dispatchedData = {
+      type: types.FETCHED_CONSUMPTION,
+      payload: data,
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({
+      consumption: data,
+    })
+  })
+  ```
+  Dit is een simpele reducer test waarbij gekeken wordt of de opgehaalde payload van de actions hetzelfde is als de verwachte data.
