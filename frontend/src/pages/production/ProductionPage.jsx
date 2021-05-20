@@ -10,6 +10,7 @@ function ProductionUI(props) {
   const [values, setValues] = useState([])
 
   const [data, setData] = useState({})
+
   useEffect(() => {
     props.fetchProduction()
   }, [])

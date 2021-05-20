@@ -1,7 +1,7 @@
 import * as types from './types'
 
 export const fetchConsumption = () => {
-    let url = '/consumption'
+    let url = '/energy/consumption'
 
     return (dispatch) => {
         return fetch(url, {
@@ -10,17 +10,25 @@ export const fetchConsumption = () => {
             },
         })
             .then((res) => res.json())
-            .then((json) => {
+            .then((res) => {
+                var tempObj = {
+                    labels: [],
+                    values: []
+                } 
+                res.forEach(element => {
+                    tempObj.labels.push(element.labels);
+                    tempObj.values.push(element.values);
+                });
                 return dispatch({
                     type: types.FETCHED_CONSUMPTION,
-                    payload: json,
+                    payload: tempObj,
                 })
             })
     }
 }
 
 export const fetchProduction = () => {
-    let url = '/production'
+    let url = '/energy/production'
 
     return (dispatch) =>
         fetch(url, {
@@ -29,10 +37,18 @@ export const fetchProduction = () => {
             },
         })
             .then((res) => res.json())
-            .then((json) => {
+            .then((res) => {
+                var tempObj = {
+                    labels: [],
+                    values: []
+                } 
+                res.forEach(element => {
+                    tempObj.labels.push(element.labels);
+                    tempObj.values.push(element.values);
+                });
                 return dispatch({
                     type: types.FETCHED_PRODUCTION,
-                    payload: json,
+                    payload: tempObj,
                 })
             })
             .catch((err) => {
