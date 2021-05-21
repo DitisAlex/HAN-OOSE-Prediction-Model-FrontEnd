@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
-import { Chart, Line } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 
-import { fetchProduction } from '../../redux/graphs/actions'
+import { fetchProduction, setHours } from '../../redux/graphs/actions'
 
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
   const [values, setValues] = useState([])
 
   const [data, setData] = useState({})
+
   useEffect(() => {
     props.fetchProduction()
   }, [])
@@ -24,7 +25,7 @@ function ProductionUI(props) {
       labels: labels,
       datasets: [
         {
-          label: 'Temperature',
+          label: 'Watts',
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgb(255, 99, 132)',
           data: values,
@@ -32,6 +33,10 @@ function ProductionUI(props) {
       ],
     })
   }, [values, labels])
+
+  const handleOnChange = (e) => {
+    props.setHours(e.target.value, 'production')
+  }
 
   return (
     <div className="consumption-page">
@@ -59,12 +64,14 @@ function ProductionUI(props) {
               type="select"
               id="exampleCustomSelect"
               name="customSelect"
+              onChange={handleOnChange}
             >
-              <option value="">Prediction Time Ahead</option>
               <option value="1">1 Hour</option>
               <option value="2">2 Hours</option>
               <option value="3">3 Hours</option>
-              <option value="4">4 Hours</option>
+              <option selected value="4">
+                4 Hours
+              </option>
             </CustomInput>
           </div>
         </div>
@@ -75,12 +82,13 @@ function ProductionUI(props) {
 }
 
 const mapStateToProps = (state) => ({
-  labels: state.graphs.production.labels,
-  values: state.graphs.production.values,
+  labels: state.graphs.selectedProduction.labels,
+  values: state.graphs.selectedProduction.values,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
+  setHours: (hours, type) => dispatch(setHours(hours, type)),
 })
 
 export const ProductionPage = connect(
