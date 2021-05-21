@@ -1,3 +1,4 @@
+import React from 'react'
 import * as types from './types'
 
 export const fetchConsumption = () => {
@@ -54,4 +55,15 @@ export const fetchProduction = () => {
             .catch((err) => {
                 console.log('Failed to fetch production data', err)
             })
+}
+
+export const filterConsumption = (filtered) => (getState) => {
+    const data = getState().graphs.consumption;
+    Object.entries(data).forEach(([key,value]) => {
+        if(value === filtered){
+            data.labels.pop(key); //todo correct de label verwijderen.
+        }
+    })
+
+    return {type: types.FILTER_CONSUMPTION, payload: filtered}
 }

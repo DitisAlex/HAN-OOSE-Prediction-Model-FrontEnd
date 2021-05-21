@@ -8,6 +8,7 @@ import { fetchProduction } from '../../redux/graphs/actions'
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
   const [values, setValues] = useState([])
+  const [filters, setFilters] = useState([])
 
   const [data, setData] = useState({})
 
@@ -33,6 +34,11 @@ function ProductionUI(props) {
       ],
     })
   }, [values, labels])
+
+    const handleOnChange = (e) => {
+      e.preventDefault();
+      setFilters(e.value.target)
+    }
 
   return (
     <div className="consumption-page">
@@ -60,8 +66,8 @@ function ProductionUI(props) {
               type="select"
               id="exampleCustomSelect"
               name="customSelect"
+              onChange={handleOnChange}
             >
-              <option value="">Prediction Time Ahead</option>
               <option value="1">1 Hour</option>
               <option value="2">2 Hours</option>
               <option value="3">3 Hours</option>
