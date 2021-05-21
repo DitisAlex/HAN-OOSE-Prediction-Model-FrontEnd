@@ -3,12 +3,11 @@ import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Chart, Line } from 'react-chartjs-2'
 
-import { fetchProduction } from '../../redux/graphs/actions'
+import { fetchProduction, setHours } from '../../redux/graphs/actions'
 
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
   const [values, setValues] = useState([])
-  const [filters, setFilters] = useState([])
 
   const [data, setData] = useState({})
 
@@ -35,10 +34,9 @@ function ProductionUI(props) {
     })
   }, [values, labels])
 
-    const handleOnChange = (e) => {
-      e.preventDefault();
-      setFilters(e.value.target)
-    }
+  const handleOnChange = (e) => {
+    props.setHours(e.target.value)
+  }
 
   return (
     <div className="consumption-page">
@@ -67,6 +65,7 @@ function ProductionUI(props) {
               id="exampleCustomSelect"
               name="customSelect"
               onChange={handleOnChange}
+              value="4"
             >
               <option value="1">1 Hour</option>
               <option value="2">2 Hours</option>
@@ -88,6 +87,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
+  setHours: (hours) => dispatch(setHours(hours)),
 })
 
 export const ProductionPage = connect(
