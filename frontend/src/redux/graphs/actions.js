@@ -1,4 +1,3 @@
-import React from 'react'
 import * as types from './types'
 
 export const fetchConsumption = () => {
@@ -59,15 +58,19 @@ export const fetchProduction = () => {
       })
 }
 
-export const setHours = (hours) => {
+export const setHours = (hours, type) => {
   return (dispatch, getState) => {
-    const data = getState().graphs.production
+    let data = ''
+    if (type === 'production') {
+      data = getState().graphs.production
+    } else if (type === 'consumption') {
+      data = getState().graphs.consumption
+    }
 
-    // only return the amount of hours that
     let earliestDate = new Date()
     earliestDate.setHours(earliestDate.getHours() - hours)
 
-    const newObject = {
+    let newObject = {
       labels: [],
       values: [],
       datetime: [],
@@ -76,9 +79,6 @@ export const setHours = (hours) => {
     for (let i = 0; i < data.labels.length; i++) {
       const dataPointDate = new Date(data.datetime[i])
 
-      console.log('earliestDate', earliestDate)
-      console.log('dataPointDate', dataPointDate)
-
       if (earliestDate < dataPointDate) {
         newObject.labels.push(data.labels[i])
         newObject.values.push(data.values[i])
@@ -86,12 +86,15 @@ export const setHours = (hours) => {
       }
     }
 
-    console.log('data', data)
-    console.log('newObject', newObject)
+    if (newObject.labels.length === 1) {
+      newObject.labels.push(newObject.labels[0])
+      newObject.values.push(newObject.values[0])
+      newObject.datetime.push(newObject.values[0])
+    }
 
     return dispatch({
       type: types.SET_HOURS,
-      payload: hours,
+      payload: { type: type, selected: newObject },
     })
   }
 }
