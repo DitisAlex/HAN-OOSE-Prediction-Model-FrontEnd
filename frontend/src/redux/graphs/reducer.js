@@ -12,6 +12,9 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case types.FETCHED_PRODUCTION:
       return { ...state, production: action.payload }
+      
+    case types.FILTER_CONSUMPTION:
+      return { ...state, filtered: action.payload }
 
     default:
       return state
