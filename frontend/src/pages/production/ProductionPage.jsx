@@ -25,7 +25,7 @@ function ProductionUI(props) {
       labels: labels,
       datasets: [
         {
-          label: 'Temperature',
+          label: 'Watts',
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgb(255, 99, 132)',
           data: values,
