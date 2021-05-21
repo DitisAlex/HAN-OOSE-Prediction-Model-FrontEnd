@@ -42,10 +42,12 @@ export const fetchProduction = () => {
         var tempObj = {
           labels: [],
           values: [],
+          datetime: [],
         }
         res.forEach((element) => {
           tempObj.labels.push(element.labels)
           tempObj.values.push(element.values)
+          tempObj.datetime.push(element.datetime)
         })
         return dispatch({
           type: types.FETCHED_PRODUCTION,
@@ -59,8 +61,33 @@ export const fetchProduction = () => {
 
 export const setHours = (hours) => {
   return (dispatch, getState) => {
-    const data = getState().graphs.consumption
-    console.log(data)
+    const data = getState().graphs.production
+
+    // only return the amount of hours that
+    let earliestDate = new Date()
+    earliestDate.setHours(earliestDate.getHours() - hours)
+
+    const newObject = {
+      labels: [],
+      values: [],
+      datetime: [],
+    }
+
+    for (let i = 0; i < data.labels.length; i++) {
+      const dataPointDate = new Date(data.datetime[i])
+
+      console.log('earliestDate', earliestDate)
+      console.log('dataPointDate', dataPointDate)
+
+      if (earliestDate < dataPointDate) {
+        newObject.labels.push(data.labels[i])
+        newObject.values.push(data.values[i])
+        newObject.datetime.push(data.datetime[i])
+      }
+    }
+
+    console.log('data', data)
+    console.log('newObject', newObject)
 
     return dispatch({
       type: types.SET_HOURS,
