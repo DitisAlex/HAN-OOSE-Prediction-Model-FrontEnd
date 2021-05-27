@@ -30,7 +30,7 @@ export default function NavbarComponent(props) {
 
           <DropdownMenu right>
             <Link to="/consumption" className="text-light">
-              <DropdownItem>Consumption data</DropdownItem>
+              <DropdownItem>EV power</DropdownItem>
             </Link>
             <Link to="/production" className="text-light">
               <DropdownItem>Solar power</DropdownItem>

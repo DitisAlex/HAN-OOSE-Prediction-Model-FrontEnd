@@ -8,7 +8,7 @@ export default class GraphCards extends Component {
       <Container>
         <Row>
           <IntroCard
-            title="Energy consumption"
+            title="EV power"
             description="On this page you can view the current and past energy consumption in this easy graph."
             link="/consumption"
           />

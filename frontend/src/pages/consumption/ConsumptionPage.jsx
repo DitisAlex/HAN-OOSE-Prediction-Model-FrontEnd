@@ -34,7 +34,7 @@ function ConsumptionPageUI(props) {
 
   return (
     <div className="consumption-page">
-      <h1 className="text-center mt-5">Energie Consumption</h1>
+      <h1 className="text-center mt-5">EV Power</h1>
       <div className="d-flex flex-row">
         <div>
           <div className="w-75 border mx-auto my-5">
