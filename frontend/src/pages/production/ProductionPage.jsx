@@ -83,7 +83,7 @@ function ProductionUI(props) {
             <Line data={data} width={100} height={50} />
           </div>
         </div>
-        <div className="col-sm-4 mr-auto border">
+        <div className="col-md-4 mr-auto border">
           <h3 className="text-center my-3">Settings</h3>
           <hr />
           <div className="w-75 mx-auto h5">
