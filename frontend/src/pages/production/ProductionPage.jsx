@@ -41,41 +41,6 @@ function ProductionUI(props) {
   return (
     <div className="container consumption-page">
       <div className="row">
-      {/* <div className="d-flex flex-row my-5"> */}
-        {/* <div className="w-50 border ml-auto mr-5">
-          <h3 className="text-center my-3">Energy Production</h3>
-
-          <div className="w-75 border mx-auto my-5">
-            <Line data={data} width={100} height={50} />
-          </div>
-        </div>
-        <div className="w-25 border ml-5 mr-auto">
-          <h3 className="text-center my-3">Settings</h3>
-          <hr />
-          <div className="w-75 mx-auto h5">
-            <CustomInput
-              className="mt-5"
-              type="switch"
-              id="exampleCustomSwitch"
-              name="customSwitch"
-              label="Predictive Data"
-            />
-            <CustomInput
-              className="mt-5"
-              type="select"
-              id="exampleCustomSelect"
-              name="customSelect"
-              onChange={handleOnChange}
-            >
-              <option value="1">1 Hour</option>
-              <option value="2">2 Hours</option>
-              <option value="3">3 Hours</option>
-              <option selected value="4">
-                4 Hours
-              </option>
-            </CustomInput>
-          </div>
-        </div> */}
         <div className="col-md-7 border ml-auto">
           <h3 className="text-center my-3">Solar Power</h3>
 
