@@ -14,7 +14,7 @@ import {
 
 export default function NavbarComponent(props) {
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar color="dark" dark className="navbar-expand">
       <NavbarBrand>Prediction Model</NavbarBrand>
       <Nav className="container-fluid" navbar>
         <NavItem>
