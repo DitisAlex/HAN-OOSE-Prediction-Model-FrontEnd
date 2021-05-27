@@ -33,7 +33,7 @@ export default function NavbarComponent(props) {
               <DropdownItem>Consumption data</DropdownItem>
             </Link>
             <Link to="/production" className="text-light">
-              <DropdownItem>Production data</DropdownItem>
+              <DropdownItem>Solar power</DropdownItem>
             </Link>
           </DropdownMenu>
         </UncontrolledDropdown>
