@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "chart.js": "^3.2.1",
-    "puppeteer": "^9.1.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.2",
@@ -18,15 +17,13 @@
     "redux": "^4.1.0",
     "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.1.1",
-    "jest": "26.6.0"
+    "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "e2e": "jest --testMatch=\"**/*.e2e.js\""
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
