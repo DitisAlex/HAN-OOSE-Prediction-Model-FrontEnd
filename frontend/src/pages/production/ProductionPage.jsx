@@ -43,7 +43,15 @@ function ProductionUI(props) {
       <div className="row">
         <div className="col-md-7 border ml-auto">
           <h3 className="text-center my-3">Solar Power</h3>
-
+          <div>
+          {(() => {
+            if(data.labels == undefined || data.labels.length < 1) {
+              return (
+              <div className="w-75 mx-auto">No data found</div>
+              )
+            }
+          })()}
+          </div>
           <div className="w-75 border mx-auto my-5">
             <Line data={data} width={100} height={50} />
           </div>
