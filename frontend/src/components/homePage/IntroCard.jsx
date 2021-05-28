@@ -16,7 +16,7 @@ class IntroCard extends Component {
         <Card body>
           <CardTitle>{this.props.title}</CardTitle>
           <CardText>{this.props.description}</CardText>
-          <Button onClick={handleClick} color="primary">
+          <Button id={this.props.title} onClick={handleClick} color="primary">
             Go to graph
           </Button>
         </Card>
