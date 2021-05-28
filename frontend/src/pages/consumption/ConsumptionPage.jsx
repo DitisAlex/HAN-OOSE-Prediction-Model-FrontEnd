@@ -31,86 +31,45 @@ function ConsumptionPageUI(props) {
       ],
     })
   }, [values, labels])
-
+  
   return (
-    <div className="consumption-page">
+    <div className="consumption-page container">
       <h1 className="text-center mt-5">EV Power</h1>
-      <div className="d-flex flex-row">
-        <div>
-          <div className="w-75 border mx-auto my-5">
-            <Line data={data} width={100} height={50} />
+        <div class="row my-auto consumptionGraphics">
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
         </div>
-        <div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
+        <div class="row my-auto consumptionGraphics">
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
+          <div class="col-sm-3 col-9 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
           </div>
         </div>
-        <div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
-          <div className="w-75 border mx-auto my-5">
-            <h3 className="text-center my-3">V1</h3>
-            <img
-              className="w-100"
-              src="https://ec.europa.eu/eurostat/statistics-explained/images/9/94/House_price_indices-graph-sk.png"
-              alt=""
-            ></img>
-          </div>
+        <br/>
+      {/* <div className="d-flex flex-row consumptionGraphics">
+        <div className="w-sm-75 w-25 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
         </div>
+        <div className="w-25 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
+        </div>
+        <div className="w-25 border mx-auto consGraph">
+          <Line data={data} width={100} height={50} />
+        </div>
+      </div> */}
       </div>
-    </div>
   )
 }
 
