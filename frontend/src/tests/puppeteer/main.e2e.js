@@ -37,5 +37,13 @@ describe("Prediction Model E2E Tests", () => {
         await page.click('input[name="customSwitch"]')
         await page.waitForTimeout(1500)
         await page.click('input[name="customSwitch"]')
+        await page.waitForTimeout(1500)
+    });
+
+    test("Navigate to /consumption page", async () => {
+        await page.click('a[id="dropdownToggle"')
+        await page.waitForTimeout(1500)
+        await page.click('a[id="consumptionPage"]')
+        await page.waitForTimeout(1500)
     });
 });
