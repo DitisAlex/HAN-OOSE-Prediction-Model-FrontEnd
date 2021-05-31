@@ -24,7 +24,7 @@ describe("Prediction Model E2E Tests", () => {
         await browser.close();
     });
 
-    test("Navigate to /production page", async () => {
+    xtest("Navigate to /production page", async () => {
         const hours = ["1", "2", "3", "4"]
         await page.click('button[id="Energy production"]')
         await page.waitForTimeout(1500)
