@@ -3,6 +3,8 @@
 .vscode
 *.asta.lock
 
+Thumbs.db
+Thumbs.db:encryptable
 
 #NPM files
 /node_modules
