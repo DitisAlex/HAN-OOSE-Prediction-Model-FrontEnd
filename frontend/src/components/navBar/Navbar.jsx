@@ -29,11 +29,11 @@ export default function NavbarComponent(props) {
           </DropdownToggle>
 
           <DropdownMenu right>
-            <Link to="/consumption" className="text-light" id="consumptionPage">
-              <DropdownItem>Consumption data</DropdownItem>
+          <Link to="/consumption" className="text-light" id="consumptionPage">
+              <DropdownItem>EV power</DropdownItem>
             </Link>
             <Link to="/production" className="text-light" id="productionPage">
-              <DropdownItem>Production data</DropdownItem>
+              <DropdownItem>Solar power</DropdownItem>
             </Link>
           </DropdownMenu>
         </UncontrolledDropdown>
