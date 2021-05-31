@@ -14,7 +14,7 @@ import {
 
 export default function NavbarComponent(props) {
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar color="dark" dark className="navbar-expand">
       <NavbarBrand>Prediction Model</NavbarBrand>
       <Nav className="container-fluid" navbar>
         <NavItem>
@@ -30,10 +30,10 @@ export default function NavbarComponent(props) {
 
           <DropdownMenu right>
             <Link to="/consumption" className="text-light">
-              <DropdownItem>Consumption data</DropdownItem>
+              <DropdownItem>EV power</DropdownItem>
             </Link>
             <Link to="/production" className="text-light">
-              <DropdownItem>Production data</DropdownItem>
+              <DropdownItem>Solar power</DropdownItem>
             </Link>
           </DropdownMenu>
         </UncontrolledDropdown>
