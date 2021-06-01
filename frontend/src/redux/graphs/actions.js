@@ -83,7 +83,7 @@ export const fetchPrediction = (hours) => {
         console.log(tempObj)
 
         return dispatch({
-          type: types.FETCHED_PRODUCTION,
+          type: types.FETCHED_PREDICTION,
           payload: tempObj,
         })
       })
