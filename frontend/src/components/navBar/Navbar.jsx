@@ -24,15 +24,15 @@ export default function NavbarComponent(props) {
         </NavItem>
 
         <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret className="text-light">
+          <DropdownToggle nav caret className="text-light" id="dropdownToggle">
             Models
           </DropdownToggle>
 
           <DropdownMenu right>
-            <Link to="/consumption" className="text-light">
+          <Link to="/consumption" className="text-light" id="consumptionPage">
               <DropdownItem>EV power</DropdownItem>
             </Link>
-            <Link to="/production" className="text-light">
+            <Link to="/production" className="text-light" id="productionPage">
               <DropdownItem>Solar power</DropdownItem>
             </Link>
           </DropdownMenu>

@@ -15,7 +15,8 @@ describe("Prediction Model E2E Tests", () => {
         });
         page = await browser.newPage();
 
-        await page.goto("http://localhost:3000/");
+        await page.goto("http://localhost:3000/")
+        await page.waitForTimeout(1500)
     });
 
     afterAll(async () => {
@@ -23,8 +24,26 @@ describe("Prediction Model E2E Tests", () => {
         await browser.close();
     });
 
-    test("Navigate to /production page", async () => {
+    xtest("Navigate to /production page", async () => {
+        const hours = ["1", "2", "3", "4"]
         await page.click('button[id="Energy production"]')
-        // alternative way to change url/page -> await page.goto("http://localhost:3000/consumption")
+        await page.waitForTimeout(1500)
+        await page.click('select[name="customSelect"]')
+        await page.waitForTimeout(1500)
+        for (i = 0; i < hours.length; i++) {
+            await page.select('select#exampleCustomSelect', hours[i])
+            await page.waitForTimeout(1500)
+        }
+        await page.click('input[name="customSwitch"]')
+        await page.waitForTimeout(1500)
+        await page.click('input[name="customSwitch"]')
+        await page.waitForTimeout(1500)
+    });
+
+    test("Navigate to /consumption page", async () => {
+        await page.click('a[id="dropdownToggle"')
+        await page.waitForTimeout(1500)
+        await page.click('a[id="consumptionPage"]')
+        await page.waitForTimeout(1500)
     });
 });
