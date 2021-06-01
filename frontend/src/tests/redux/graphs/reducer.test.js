@@ -52,4 +52,56 @@ describe('Graphs reducers', () => {
       selectedProduction: data,
     })
   })
+
+  it('Should handle SET_HOURS production', () => {
+    const dispatchedData = {
+      type: types.SET_HOURS,
+      payload: {
+        type: 'production',
+        selected: {
+          labels: ['1:30 PM'],
+          values: [7],
+          datetime: ['2021-05-31 13:30'],
+        },
+      },
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({
+      selectedProduction: {
+        labels: ['1:30 PM'],
+        values: [7],
+        datetime: ['2021-05-31 13:30'],
+      },
+    })
+  })
+
+  it('Should handle SET_HOURS consumption', () => {
+    const dispatchedData = {
+      type: types.SET_HOURS,
+      payload: {
+        type: 'consumption',
+        selected: {
+          labels: ['1:30 PM'],
+          values: [7],
+          datetime: ['2021-05-31 13:30'],
+        },
+      },
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({
+      selectedConsumption: {
+        labels: ['1:30 PM'],
+        values: [7],
+        datetime: ['2021-05-31 13:30'],
+      },
+    })
+  })
+
+  it('Should handle SET_HOURS nothing', () => {
+    const dispatchedData = {
+      type: types.SET_HOURS,
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({})
+  })
 })
