@@ -58,6 +58,40 @@ export const fetchProduction = () => {
       })
 }
 
+export const fetchPrediction = (hours) => {
+  let url = "/prediction?hours=" + hours;
+
+  return (dispatch) =>
+    fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        var tempObj = {
+          labels: [],
+          values: [],
+          datetime: [],
+        }
+        res.forEach((element) => {
+          tempObj.labels.push(element.labels)
+          tempObj.values.push(element.value)
+          tempObj.datetime.push(element.datetime)
+        })
+
+        console.log(tempObj)
+
+        return dispatch({
+          type: types.FETCHED_PRODUCTION,
+          payload: tempObj,
+        })
+      })
+      .catch((err) => {
+        console.log('Failed to fetch prediction data', err)
+      })
+}
+
 export const setHours = (hours, type) => {
   return (dispatch, getState) => {
     let data = ''
@@ -68,7 +102,7 @@ export const setHours = (hours, type) => {
     }
 
     let earliestDate = new Date()
-    earliestDate.setHours(earliestDate.getHours() - hours)
+    earliestDate.setHours(earliestDate.getHours() - 120)
 
     let newObject = {
       labels: [],
