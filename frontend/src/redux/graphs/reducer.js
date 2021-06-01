@@ -31,9 +31,9 @@ const reducer = (state = INITIAL_STATE, action) => {
       }
 
     case types.SET_HOURS:
-      if (action.payload.type === 'production') {
+      if (action?.payload?.type === 'production') {
         return { ...state, selectedProduction: action.payload.selected }
-      } else if (action.payload.type === 'consumption') {
+      } else if (action?.payload?.type === 'consumption') {
         return { ...state, selectedConsumption: action.payload.selected }
       } else {
         return { ...state }
