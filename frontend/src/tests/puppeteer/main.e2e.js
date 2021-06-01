@@ -26,7 +26,7 @@ describe("Prediction Model E2E Tests", () => {
 
     xtest("Navigate to /production page", async () => {
         const hours = ["1", "2", "3", "4"]
-        await page.click('button[id="Energy production"]')
+        await page.click('button[id="Solar power"]')
         await page.waitForTimeout(1500)
         await page.click('select[name="customSelect"]')
         await page.waitForTimeout(1500)
