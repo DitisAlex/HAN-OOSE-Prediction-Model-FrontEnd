@@ -79,9 +79,6 @@ export const fetchPrediction = (hours) => {
           tempObj.values.push(element.value)
           tempObj.datetime.push(element.datetime)
         })
-
-        console.log(tempObj)
-
         return dispatch({
           type: types.FETCHED_PREDICTION,
           payload: tempObj,
