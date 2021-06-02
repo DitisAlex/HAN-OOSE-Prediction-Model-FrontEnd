@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "e2e": "jest --testMatch=\"**/*.e2e.js\""
+    "e2e": "jest --testMatch=\"**/*.e2e.js\" --runInBand"
   },
   "browserslist": {
     "production": [
