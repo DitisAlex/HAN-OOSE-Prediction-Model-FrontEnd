@@ -10,9 +10,13 @@ function ProductionUI(props) {
   const [values, setValues] = useState([])
   const [data, setData] = useState({})
 
+  const [predictionLabels, setPredictionLabels] = useState([])
+  const [predictionValues, setPredictionValues] = useState([])
+  const [predictionToggler, setPredictionToggler] = useState(false)
+  const [predictionTime, setPredictionTime] = useState(4)
+
   useEffect(() => {
     props.fetchProduction()
-    props.fetchPrediction(4)
   }, [])
 
   useEffect(() => {
@@ -21,21 +25,55 @@ function ProductionUI(props) {
   }, [props.labels, props.values])
 
   useEffect(() => {
-    setData({
-      labels: labels,
-      datasets: [
-        {
-          label: 'Watts',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: values,
-        },
-      ],
-    })
-  }, [values, labels])
+    setPredictionLabels(props.predictionLabels)
+    setPredictionValues(props.predictionValues)
+  }, [props.predictionLabels, props.predictionValues])
+
+  useEffect(() => {
+    if (predictionToggler && predictionLabels !== undefined) {
+      setData({
+        labels: labels.concat(predictionLabels),
+        datasets: [
+          {
+            label: 'Watts',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: values
+          },
+          {
+            label: 'Prediction Watts',
+            backgroundColor: 'rgb(30,144,255)',
+            borderColor: 'rgb(30,144,255)',
+            data: [ , , , values[values.length-1], ...predictionValues],
+          }
+        ],
+      })
+    } else {
+      setData({
+        labels: labels,
+        datasets: [
+          {
+            label: 'Watts',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: values,
+          },
+        ],
+      })
+    }
+  }, [values, labels, predictionValues, predictionLabels, predictionToggler])
 
   const handleOnChange = (e) => {
-    props.setHours(e.target.value, 'production')
+    if (predictionToggler) {
+      setPredictionTime(e.target.value)
+      props.fetchPrediction(e.target.value)
+    }
+    if (!predictionToggler) props.setHours(e.target.value, 'production')
+  }
+
+  const handlePredictionToggler = (e) => {
+    setPredictionToggler(!predictionToggler)
+    if (!predictionToggler) props.fetchPrediction(predictionTime)
   }
 
   return (
@@ -44,13 +82,13 @@ function ProductionUI(props) {
         <div className="col-md-7 border ml-auto">
           <h3 className="text-center my-3">Solar Power</h3>
           <div>
-          {(() => {
-            if(data.labels == undefined || data.labels.length < 1) {
-              return (
-              <div className="w-75 mx-auto">No data found</div>
-              )
-            }
-          })()}
+            {(() => {
+              if (data.labels == undefined || data.labels.length < 1) {
+                return (
+                  <div className="w-75 mx-auto">No data found</div>
+                )
+              }
+            })()}
           </div>
           <div className="w-75 border mx-auto my-5">
             <Line data={data} width={100} height={50} />
@@ -66,6 +104,8 @@ function ProductionUI(props) {
               id="exampleCustomSwitch"
               name="customSwitch"
               label="Predictive Data"
+              value={predictionToggler}
+              onChange={handlePredictionToggler}
             />
             <CustomInput
               className="mt-5"
@@ -81,7 +121,7 @@ function ProductionUI(props) {
             </CustomInput>
           </div>
         </div>
-        
+
       </div>
       <hr />
     </div>
@@ -91,6 +131,8 @@ function ProductionUI(props) {
 const mapStateToProps = (state) => ({
   labels: state.graphs.selectedProduction.labels,
   values: state.graphs.selectedProduction.values,
+  predictionValues: state.graphs.prediction.values,
+  predictionLabels: state.graphs.prediction.labels
 })
 
 const mapDispatchToProps = (dispatch) => ({
