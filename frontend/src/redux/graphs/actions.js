@@ -59,8 +59,7 @@ export const fetchProduction = () => {
 }
 
 export const fetchPrediction = (hours) => {
-  let url = "/prediction?hours=" + hours;
-
+  let url = "/prediction/" + hours;
   return (dispatch) =>
     fetch(url, {
       headers: {
