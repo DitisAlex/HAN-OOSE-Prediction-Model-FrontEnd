@@ -3,16 +3,16 @@ import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
-import { fetchProduction, setHours } from '../../redux/graphs/actions'
+import { fetchPrediction, fetchProduction, setHours } from '../../redux/graphs/actions'
 
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
   const [values, setValues] = useState([])
-
   const [data, setData] = useState({})
 
   useEffect(() => {
     props.fetchProduction()
+    props.fetchPrediction(4)
   }, [])
 
   useEffect(() => {
@@ -96,6 +96,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
   setHours: (hours, type) => dispatch(setHours(hours, type)),
+  fetchPrediction: (hours) => dispatch(fetchPrediction(hours))
 })
 
 export const ProductionPage = connect(
