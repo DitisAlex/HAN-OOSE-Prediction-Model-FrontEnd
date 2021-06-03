@@ -24,6 +24,7 @@ describe('Graphs reducers', () => {
       consumption: {},
       selectedProduction: {},
       selectedConsumption: {},
+      prediction: {},
     }
 
     expect(graphsReducer(undefined, {})).toEqual(expected)
@@ -103,5 +104,16 @@ describe('Graphs reducers', () => {
     }
 
     expect(graphsReducer([], dispatchedData)).toEqual({})
+  })
+
+  it('Should handle FETCHED_PREDICTION', () => {
+    const dispatchedData = {
+      type: types.FETCHED_PREDICTION,
+      payload: data,
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({
+      prediction: data,
+    })
   })
 })
