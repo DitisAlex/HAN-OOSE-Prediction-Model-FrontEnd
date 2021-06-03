@@ -35,25 +35,25 @@ function ConsumptionPageUI(props) {
   return (
     <div className="consumption-page container">
       <h1 className="text-center mt-5 ">EV Power</h1>
-        <div class="row my-auto consumptionGraphics">
-          <div class="col-md-4 col-11 border mx-auto consGraph">
+        <div className="row my-auto consumptionGraphics">
+          <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-md-4 col-11 border mx-auto consGraph">
+          <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-md-4 col-11 border mx-auto consGraph">
+          <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
         </div><br/>
-        <div class="row my-auto consumptionGraphics">
-        <div class="col-md-4 col-11 border mx-auto consGraph">
+        <div className="row my-auto consumptionGraphics">
+        <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-md-4 col-11 border mx-auto consGraph">
+          <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-md-4 col-11 border mx-auto consGraph">
+          <div className="col-md-4 col-11 border mx-auto consGraph">
             <Line data={data} width={100} height={50} />
           </div>
         </div>
