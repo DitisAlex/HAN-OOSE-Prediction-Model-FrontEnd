@@ -60,6 +60,7 @@ export const fetchProduction = () => {
 
 export const fetchPrediction = (hours) => {
   let url = "/prediction/" + hours;
+
   return (dispatch) =>
     fetch(url, {
       headers: {
@@ -78,6 +79,7 @@ export const fetchPrediction = (hours) => {
           tempObj.values.push(element.value)
           tempObj.datetime.push(element.datetime)
         })
+
         return dispatch({
           type: types.FETCHED_PREDICTION,
           payload: tempObj,
@@ -98,7 +100,7 @@ export const setHours = (hours, type) => {
     }
 
     let earliestDate = new Date()
-    earliestDate.setHours(earliestDate.getHours() - 120)
+    earliestDate.setHours(earliestDate.getHours() - 4)
 
     let newObject = {
       labels: [],
@@ -106,7 +108,8 @@ export const setHours = (hours, type) => {
       datetime: [],
     }
 
-    for (let i = 0; i < data.labels.length; i++) {
+
+    for (let i = 0; i < data.labels?.length; i++) {
       const dataPointDate = new Date(data.datetime[i])
 
       if (earliestDate < dataPointDate) {

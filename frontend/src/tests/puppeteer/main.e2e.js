@@ -24,21 +24,36 @@ describe("Prediction Model E2E Tests", () => {
         await browser.close();
     });
 
-    xtest("Navigate to /production page", async () => {
+    test("Navigate to /production page", async () => {
         const hours = ["1", "2", "3", "4"]
+
         await page.click('button[id="Solar power"]')
         await page.waitForTimeout(1500)
-        await page.click('select[name="customSelect"]')
+        for (i = 0; i < hours.length; i++) {
+            await page.click('select[name="customSelect"]')
+            await page.waitForTimeout(1500)
+            await page.select('select#exampleCustomSelect', hours[i])
+            await page.click('select[name="customSelect"]')
+            await page.waitForTimeout(2000)
+        }
+        await page.waitForTimeout(1500)
+    });
+
+    test("Test /production prediction data", async () => {
+        const hours = ["1", "2", "3", "4"]
+
+        await page.click('input[name="customSwitch"]')
         await page.waitForTimeout(1500)
         for (i = 0; i < hours.length; i++) {
-            await page.select('select#exampleCustomSelect', hours[i])
+            await page.click('select[name="customSelect"]')
             await page.waitForTimeout(1500)
+            await page.select('select#exampleCustomSelect', hours[i])
+            await page.click('select[name="customSelect"]')
+            await page.waitForTimeout(2000)
         }
         await page.click('input[name="customSwitch"]')
         await page.waitForTimeout(1500)
-        await page.click('input[name="customSwitch"]')
-        await page.waitForTimeout(1500)
-    });
+    })
 
     test("Navigate to /consumption page", async () => {
         await page.click('a[id="dropdownToggle"')
