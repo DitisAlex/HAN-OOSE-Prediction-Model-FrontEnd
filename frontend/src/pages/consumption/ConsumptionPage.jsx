@@ -31,44 +31,32 @@ function ConsumptionPageUI(props) {
       ],
     })
   }, [values, labels])
-  
+
   return (
     <div className="consumption-page container">
-      <h1 className="text-center mt-5">EV Power</h1>
+      <h1 className="text-center mt-5 ">EV Power</h1>
         <div class="row my-auto consumptionGraphics">
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+          <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+          <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+          <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
-        </div>
+        </div><br/>
         <div class="row my-auto consumptionGraphics">
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+        <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+          <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
-          <div class="col-sm-3 col-9 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
+          <div class="col-md-4 col-11 border mx-auto consGraph">
+            <Line data={data} width={100} height={50} />
           </div>
         </div>
-        <br/>
-      {/* <div className="d-flex flex-row consumptionGraphics">
-        <div className="w-sm-75 w-25 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
-        </div>
-        <div className="w-25 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
-        </div>
-        <div className="w-25 border mx-auto consGraph">
-          <Line data={data} width={100} height={50} />
-        </div>
-      </div> */}
       </div>
   )
 }
