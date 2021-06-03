@@ -100,7 +100,7 @@ export const setHours = (hours, type) => {
     }
 
     let earliestDate = new Date()
-    earliestDate.setHours(earliestDate.getHours() - 300)
+    earliestDate.setHours(earliestDate.getHours() - hours)
 
     let newObject = {
       labels: [],

@@ -112,6 +112,7 @@ function ProductionUI(props) {
               type="select"
               id="exampleCustomSelect"
               name="customSelect"
+              disabled={predictionToggler ? true : false}
               onChange={handleOnChange}
             >
               <option value="1">1 Hour</option>
