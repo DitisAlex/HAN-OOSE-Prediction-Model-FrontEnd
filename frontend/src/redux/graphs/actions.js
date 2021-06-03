@@ -59,7 +59,7 @@ export const fetchProduction = () => {
 }
 
 export const fetchPrediction = (hours) => {
-  let url = "/prediction/" + hours;
+  let url = "/prediction?hours=" + hours;
 
   return (dispatch) =>
     fetch(url, {
@@ -100,7 +100,7 @@ export const setHours = (hours, type) => {
     }
 
     let earliestDate = new Date()
-    earliestDate.setHours(earliestDate.getHours() - 4)
+    earliestDate.setHours(earliestDate.getHours() - 300)
 
     let newObject = {
       labels: [],
