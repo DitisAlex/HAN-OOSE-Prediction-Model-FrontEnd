@@ -35,8 +35,7 @@ describe('Graphs reducers', () => {
     }
 
     expect(graphsReducer([], dispatchedData)).toEqual({
-      consumption: data,
-      selectedConsumption: data,
+      consumption: data
     })
   })
 
@@ -47,8 +46,7 @@ describe('Graphs reducers', () => {
     }
 
     expect(graphsReducer([], dispatchedData)).toEqual({
-      production: data,
-      selectedProduction: data,
+      production: data
     })
   })
 
