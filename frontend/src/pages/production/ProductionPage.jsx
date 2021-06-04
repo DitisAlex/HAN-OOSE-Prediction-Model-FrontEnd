@@ -44,7 +44,7 @@ function ProductionUI(props) {
             label: 'Prediction Watts',
             backgroundColor: 'rgb(30,144,255)',
             borderColor: 'rgb(30,144,255)',
-            data: [ , , , values[values.length-1], ...predictionValues],
+            data: values.concat(predictionValues),
           }
         ],
       })
