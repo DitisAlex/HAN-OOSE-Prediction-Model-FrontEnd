@@ -3,7 +3,7 @@ import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
-import { fetchPrediction, fetchProduction, setHours } from '../../redux/graphs/actions'
+import { fetchPrediction, fetchProduction } from '../../redux/graphs/actions'
 
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
@@ -44,7 +44,7 @@ function ProductionUI(props) {
             label: 'Prediction Watts',
             backgroundColor: 'rgb(30,144,255)',
             borderColor: 'rgb(30,144,255)',
-            data: [ , , , values[values.length-1], ...predictionValues],
+            data: values.concat(predictionValues),
           }
         ],
       })
@@ -68,7 +68,6 @@ function ProductionUI(props) {
       setPredictionTime(e.target.value)
       props.fetchPrediction(e.target.value)
     }
-    if (!predictionToggler) props.setHours(e.target.value, 'production')
   }
 
   const handlePredictionToggler = (e) => {
@@ -112,6 +111,7 @@ function ProductionUI(props) {
               type="select"
               id="exampleCustomSelect"
               name="customSelect"
+              disabled={predictionToggler ? false : true}
               onChange={handleOnChange}
             >
               <option value="1">1 Hour</option>
@@ -121,7 +121,6 @@ function ProductionUI(props) {
             </CustomInput>
           </div>
         </div>
-
       </div>
       <hr />
     </div>
@@ -137,7 +136,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
-  setHours: (hours, type) => dispatch(setHours(hours, type)),
   fetchPrediction: (hours) => dispatch(fetchPrediction(hours))
 })
 
