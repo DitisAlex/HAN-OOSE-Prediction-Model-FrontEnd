@@ -3,9 +3,7 @@ import * as types from './types'
 const INITIAL_STATE = {
   production: {},
   consumption: {},
-  prediction: {},
-  selectedProduction: {},
-  selectedConsumption: {},
+  prediction: {}
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -14,14 +12,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         consumption: action.payload,
-        selectedConsumption: action.payload,
       }
 
     case types.FETCHED_PRODUCTION:
       return {
         ...state,
         production: action.payload,
-        selectedProduction: action.payload,
       }
 
     case types.FETCHED_PREDICTION:
