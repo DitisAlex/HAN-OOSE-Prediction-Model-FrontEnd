@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import { ProductionPage } from './pages/production/ProductionPage'
 import { ConsumptionPage } from './pages/consumption/ConsumptionPage'
-import Navbar from './components/navBar/Navbar'
+import NavbarComponent from './components/navBar/NavbarComponent'
 
 import HomePage from './pages/homePage/HomePage'
 
@@ -17,7 +17,7 @@ export default class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          <NavbarComponent />
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />

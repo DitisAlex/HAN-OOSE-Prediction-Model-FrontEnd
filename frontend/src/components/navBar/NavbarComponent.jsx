@@ -11,7 +11,7 @@ import {
   DropdownItem,
 } from 'reactstrap'
 
-export default function Navbar(props) {
+export default function NavbarComponent() {
   return (
     <Navbar color="dark" dark className="navbar-expand">
       <NavbarBrand>Prediction Model</NavbarBrand>
