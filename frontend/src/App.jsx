@@ -20,7 +20,6 @@ export default class App extends React.Component {
           <NavbarComponent />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/login" component={Login} />
             <Route path="/production" component={ProductionPage} />
             <Route path="/consumption" component={ConsumptionPage} />
           </Switch>
