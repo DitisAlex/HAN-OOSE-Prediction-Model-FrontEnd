@@ -3,8 +3,8 @@ import * as types from './types'
 export const fetchConsumption = () => {
   let url = '/energy/consumption'
 
-  return (dispatch) => {
-    return fetch(url, {
+  return (dispatch) =>
+    fetch(url, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -14,17 +14,21 @@ export const fetchConsumption = () => {
         var tempObj = {
           labels: [],
           values: [],
+          datetime: [],
         }
         res.forEach((element) => {
           tempObj.labels.push(element.labels)
           tempObj.values.push(element.values)
+          tempObj.datetime.push(element.datetime)
         })
         return dispatch({
           type: types.FETCHED_CONSUMPTION,
           payload: tempObj,
         })
       })
-  }
+      .catch((err) => {
+        console.log('Failed to fetch consumption data', err)
+      })
 }
 
 export const fetchProduction = () => {
@@ -59,7 +63,7 @@ export const fetchProduction = () => {
 }
 
 export const fetchPrediction = (hours) => {
-  let url = "/prediction/" + hours;
+  let url = '/prediction/' + hours
 
   return (dispatch) =>
     fetch(url, {
