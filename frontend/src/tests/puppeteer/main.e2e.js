@@ -26,17 +26,7 @@ describe('Prediction Model E2E Tests', () => {
   })
 
   test('Navigate to /production page', async () => {
-    const hours = ['1', '2', '3', '4']
-
     await page.click('button[id="Solar power"]')
-    await page.waitForTimeout(1500)
-    for (let i = 0; i < hours.length; i++) {
-      await page.click(customSelect)
-      await page.waitForTimeout(1500)
-      await page.select('select#exampleCustomSelect', hours[i])
-      await page.click(customSelect)
-      await page.waitForTimeout(2000)
-    }
     await page.waitForTimeout(1500)
   })
 
@@ -60,6 +50,11 @@ describe('Prediction Model E2E Tests', () => {
     await page.click('a[id="dropdownToggle"')
     await page.waitForTimeout(1500)
     await page.click('a[id="consumptionPage"]')
+    await page.waitForTimeout(1500)
+  })
+
+  test('Navigate back to home page', async () => {
+    await page.click('a[id="homepage"')
     await page.waitForTimeout(1500)
   })
 })

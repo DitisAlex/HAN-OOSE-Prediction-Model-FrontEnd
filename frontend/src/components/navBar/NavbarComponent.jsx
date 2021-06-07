@@ -4,7 +4,6 @@ import {
   Navbar,
   NavbarBrand,
   Nav,
-  NavItem,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -14,20 +13,16 @@ import {
 export default function NavbarComponent() {
   return (
     <Navbar color="dark" dark className="navbar-expand">
-      <NavbarBrand>Prediction Model</NavbarBrand>
-      <Nav className="container-fluid" navbar>
-        <NavItem>
-          <Link to="/" className="text-light">
-            Home
-          </Link>
-        </NavItem>
-
+      <Link to="/">
+        <NavbarBrand id="homepage">Prediction Model</NavbarBrand>
+      </Link>
+      <Nav navbar>
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret className="text-light" id="dropdownToggle">
             Models
           </DropdownToggle>
 
-          <DropdownMenu right>
+          <DropdownMenu>
             <Link to="/consumption" className="text-light" id="consumptionPage">
               <DropdownItem>EV power</DropdownItem>
             </Link>
