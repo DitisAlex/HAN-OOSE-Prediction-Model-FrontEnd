@@ -2,15 +2,27 @@ import { graphsReducer } from '../../../redux/graphs/reducer'
 import * as types from '../../../redux/graphs/types'
 
 describe('Graphs reducers', () => {
-  const data = {
-    labels: ['10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM'],
-    values: [8, 10, 15, 13, 17, 18, 22, 19],
-  }
+  const data = [
+    {
+      type: types.FETCHED_PRODUCTION,
+      payload: {
+        labels: ['10:30 AM', '11:30 AM', '12:30 PM', '1:30 PM'],
+        values: [6, 5, 6, 7],
+        datetime: [
+          '2021-05-31 10:30',
+          '2021-05-31 11:30',
+          '2021-05-31 12:30',
+          '2021-05-31 13:30',
+        ],
+      },
+    },
+  ]
 
   it('Should return the initial state', () => {
     const expected = {
-      consumption: {},
       production: {},
+      consumption: {},
+      prediction: {},
     }
 
     expect(graphsReducer(undefined, {})).toEqual(expected)
@@ -23,7 +35,7 @@ describe('Graphs reducers', () => {
     }
 
     expect(graphsReducer([], dispatchedData)).toEqual({
-      consumption: data,
+      consumption: data
     })
   })
 
@@ -34,7 +46,18 @@ describe('Graphs reducers', () => {
     }
 
     expect(graphsReducer([], dispatchedData)).toEqual({
-      production: data,
+      production: data
+    })
+  })
+
+  it('Should handle FETCHED_PREDICTION', () => {
+    const dispatchedData = {
+      type: types.FETCHED_PREDICTION,
+      payload: data,
+    }
+
+    expect(graphsReducer([], dispatchedData)).toEqual({
+      prediction: data,
     })
   })
 })

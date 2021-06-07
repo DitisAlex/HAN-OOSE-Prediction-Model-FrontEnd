@@ -1,0 +1,5 @@
+@media screen and (max-width: 768px) {
+    .consumptionGraphics .consGraph {
+        margin-bottom:16px;
+    }
+}

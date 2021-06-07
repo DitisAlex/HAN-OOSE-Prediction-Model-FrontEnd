@@ -1,34 +1,7 @@
 import * as types from './types'
 
 export const fetchConsumption = () => {
-  let url = '/energy/consumption'
-
-  return (dispatch) => {
-    return fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        var tempObj = {
-          labels: [],
-          values: [],
-        }
-        res.forEach((element) => {
-          tempObj.labels.push(element.labels)
-          tempObj.values.push(element.values)
-        })
-        return dispatch({
-          type: types.FETCHED_CONSUMPTION,
-          payload: tempObj,
-        })
-      })
-  }
-}
-
-export const fetchProduction = () => {
-  let url = '/energy/production'
+  const url = '/energy/consumption'
 
   return (dispatch) =>
     fetch(url, {
@@ -49,6 +22,37 @@ export const fetchProduction = () => {
           tempObj.datetime.push(element.datetime)
         })
         return dispatch({
+          type: types.FETCHED_CONSUMPTION,
+          payload: tempObj,
+        })
+      })
+      .catch((err) => {
+        console.log('Failed to fetch consumption data', err)
+      })
+}
+
+export const fetchProduction = () => {
+  const url = '/energy/production'
+
+  return (dispatch) =>
+    fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        var tempObj = {
+          labels: [],
+          values: [],
+          datetime: [],
+        }
+        res.forEach((datapoint) => {
+          tempObj.labels.push(datapoint.labels)
+          tempObj.values.push(datapoint.values)
+          tempObj.datetime.push(datapoint.datetime)
+        })
+        return dispatch({
           type: types.FETCHED_PRODUCTION,
           payload: tempObj,
         })
@@ -58,43 +62,34 @@ export const fetchProduction = () => {
       })
 }
 
-export const setHours = (hours, type) => {
-  return (dispatch, getState) => {
-    let data = ''
-    if (type === 'production') {
-      data = getState().graphs.production
-    } else if (type === 'consumption') {
-      data = getState().graphs.consumption
-    }
+export const fetchPrediction = (hours) => {
+  const url = `/prediction/${hours}`
 
-    let earliestDate = new Date()
-    earliestDate.setHours(earliestDate.getHours() - hours)
-
-    let newObject = {
-      labels: [],
-      values: [],
-      datetime: [],
-    }
-
-    for (let i = 0; i < data.labels.length; i++) {
-      const dataPointDate = new Date(data.datetime[i])
-
-      if (earliestDate < dataPointDate) {
-        newObject.labels.push(data.labels[i])
-        newObject.values.push(data.values[i])
-        newObject.datetime.push(data.datetime[i])
-      }
-    }
-
-    if (newObject.labels.length === 1) {
-      newObject.labels.push(newObject.labels[0])
-      newObject.values.push(newObject.values[0])
-      newObject.datetime.push(newObject.values[0])
-    }
-
-    return dispatch({
-      type: types.SET_HOURS,
-      payload: { type: type, selected: newObject },
+  return (dispatch) =>
+    fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-  }
+      .then((res) => res.json())
+      .then((res) => {
+        var tempObj = {
+          labels: [],
+          values: [],
+          datetime: [],
+        }
+        res.forEach((element) => {
+          tempObj.labels.push(element.labels)
+          tempObj.values.push(element.value)
+          tempObj.datetime.push(element.datetime)
+        })
+
+        return dispatch({
+          type: types.FETCHED_PREDICTION,
+          payload: tempObj,
+        })
+      })
+      .catch((err) => {
+        console.log('Failed to fetch prediction data', err)
+      })
 }

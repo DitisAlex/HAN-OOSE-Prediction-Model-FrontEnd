@@ -3,13 +3,17 @@ import { CustomInput } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
-import { fetchProduction, setHours } from '../../redux/graphs/actions'
+import { fetchPrediction, fetchProduction } from '../../redux/graphs/actions'
 
 function ProductionUI(props) {
   const [labels, setLabels] = useState([])
   const [values, setValues] = useState([])
-
   const [data, setData] = useState({})
+
+  const [predictionLabels, setPredictionLabels] = useState([])
+  const [predictionValues, setPredictionValues] = useState([])
+  const [predictionToggler, setPredictionToggler] = useState(false)
+  const [predictionTime, setPredictionTime] = useState(4)
 
   useEffect(() => {
     props.fetchProduction()
@@ -21,34 +25,76 @@ function ProductionUI(props) {
   }, [props.labels, props.values])
 
   useEffect(() => {
-    setData({
-      labels: labels,
-      datasets: [
-        {
-          label: 'Watts',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: values,
-        },
-      ],
-    })
-  }, [values, labels])
+    setPredictionLabels(props.predictionLabels)
+    setPredictionValues(props.predictionValues)
+  }, [props.predictionLabels, props.predictionValues])
+
+  const pink = 'rgb(255, 99, 132)'
+  const blue = 'rgb(30,144,255)'
+
+  useEffect(() => {
+    if (predictionToggler && predictionLabels !== undefined) {
+      setData({
+        labels: labels?.concat(predictionLabels),
+        datasets: [
+          {
+            label: 'Watts',
+            backgroundColor: pink,
+            borderColor: pink,
+            data: values,
+          },
+          {
+            label: 'Prediction Watts',
+            backgroundColor: blue,
+            borderColor: blue,
+            data: values.concat(predictionValues),
+          },
+        ],
+      })
+    } else {
+      setData({
+        labels: labels,
+        datasets: [
+          {
+            label: 'Watts',
+            backgroundColor: pink,
+            borderColor: pink,
+            data: values,
+          },
+        ],
+      })
+    }
+  }, [values, labels, predictionValues, predictionLabels, predictionToggler])
 
   const handleOnChange = (e) => {
-    props.setHours(e.target.value, 'production')
+    if (predictionToggler) {
+      setPredictionTime(e.target.value)
+      props.fetchPrediction(e.target.value)
+    }
+  }
+
+  const handlePredictionToggler = (e) => {
+    setPredictionToggler(!predictionToggler)
+    if (!predictionToggler) props.fetchPrediction(predictionTime)
   }
 
   return (
-    <div className="consumption-page">
-      <div className="d-flex flex-row my-5">
-        <div className="w-50 border ml-auto mr-5">
-          <h3 className="text-center my-3">Energy Production</h3>
-
+    <div className="container consumption-page">
+      <div className="row">
+        <div className="col-md-7 border ml-auto">
+          <h3 className="text-center my-3">Solar Power</h3>
+          <div>
+            {(() => {
+              if (data.labels == undefined || data.labels.length < 1) {
+                return <div className="w-75 mx-auto">No data found</div>
+              }
+            })()}
+          </div>
           <div className="w-75 border mx-auto my-5">
             <Line data={data} width={100} height={50} />
           </div>
         </div>
-        <div className="w-25 border ml-5 mr-auto">
+        <div className="col-md-4 mr-auto border">
           <h3 className="text-center my-3">Settings</h3>
           <hr />
           <div className="w-75 mx-auto h5">
@@ -58,12 +104,15 @@ function ProductionUI(props) {
               id="exampleCustomSwitch"
               name="customSwitch"
               label="Predictive Data"
+              value={predictionToggler}
+              onChange={handlePredictionToggler}
             />
             <CustomInput
               className="mt-5"
               type="select"
               id="exampleCustomSelect"
               name="customSelect"
+              disabled={predictionToggler ? false : true}
               onChange={handleOnChange}
             >
               <option value="1">1 Hour</option>
@@ -82,13 +131,15 @@ function ProductionUI(props) {
 }
 
 const mapStateToProps = (state) => ({
-  labels: state.graphs.selectedProduction.labels,
-  values: state.graphs.selectedProduction.values,
+  labels: state.graphs.production.labels,
+  values: state.graphs.production.values,
+  predictionValues: state.graphs.prediction.values,
+  predictionLabels: state.graphs.prediction.labels,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
-  setHours: (hours, type) => dispatch(setHours(hours, type)),
+  fetchPrediction: (hours) => dispatch(fetchPrediction(hours)),
 })
 
 export const ProductionPage = connect(
