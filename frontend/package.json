@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false --collectCoverage",
+    "test": "react-scripts test --coverage --watchAll=false --collectCoverage --collectCoverageFrom=src/redux/graphs**/*js",
     "eject": "react-scripts eject",
     "e2e": "jest --testMatch=\"**/*.e2e.js\" --runInBand"
   },
