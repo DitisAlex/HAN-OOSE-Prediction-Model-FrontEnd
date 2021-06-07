@@ -1,7 +1,7 @@
 import * as types from './types'
 
 export const fetchConsumption = () => {
-  let url = '/energy/consumption'
+  const url = '/energy/consumption'
 
   return (dispatch) =>
     fetch(url, {
@@ -32,7 +32,7 @@ export const fetchConsumption = () => {
 }
 
 export const fetchProduction = () => {
-  let url = '/energy/production'
+  const url = '/energy/production'
 
   return (dispatch) =>
     fetch(url, {
@@ -47,10 +47,10 @@ export const fetchProduction = () => {
           values: [],
           datetime: [],
         }
-        res.forEach((element) => {
-          tempObj.labels.push(element.labels)
-          tempObj.values.push(element.values)
-          tempObj.datetime.push(element.datetime)
+        res.forEach((datapoint) => {
+          tempObj.labels.push(datapoint.labels)
+          tempObj.values.push(datapoint.values)
+          tempObj.datetime.push(datapoint.datetime)
         })
         return dispatch({
           type: types.FETCHED_PRODUCTION,
@@ -63,7 +63,7 @@ export const fetchProduction = () => {
 }
 
 export const fetchPrediction = (hours) => {
-  let url = '/prediction/' + hours
+  const url = `/prediction/${hours}`
 
   return (dispatch) =>
     fetch(url, {

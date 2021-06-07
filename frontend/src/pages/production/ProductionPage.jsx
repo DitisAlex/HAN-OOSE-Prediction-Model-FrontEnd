@@ -29,6 +29,9 @@ function ProductionUI(props) {
     setPredictionValues(props.predictionValues)
   }, [props.predictionLabels, props.predictionValues])
 
+  const pink = 'rgb(255, 99, 132)'
+  const blue = 'rgb(30,144,255)'
+
   useEffect(() => {
     if (predictionToggler && predictionLabels !== undefined) {
       setData({
@@ -36,15 +39,15 @@ function ProductionUI(props) {
         datasets: [
           {
             label: 'Watts',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: pink,
+            borderColor: pink,
             data: values,
           },
           {
             label: 'Prediction Watts',
-            backgroundColor: 'rgb(30,144,255)',
-            borderColor: 'rgb(30,144,255)',
-            data: values?.concat(predictionValues),
+            backgroundColor: blue,
+            borderColor: blue,
+            data: values.concat(predictionValues),
           },
         ],
       })
@@ -54,8 +57,8 @@ function ProductionUI(props) {
         datasets: [
           {
             label: 'Watts',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: pink,
+            borderColor: pink,
             data: values,
           },
         ],
