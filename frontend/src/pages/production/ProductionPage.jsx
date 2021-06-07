@@ -32,7 +32,7 @@ function ProductionUI(props) {
   useEffect(() => {
     if (predictionToggler && predictionLabels !== undefined) {
       setData({
-        labels: labels.concat(predictionLabels),
+        labels: labels?.concat(predictionLabels),
         datasets: [
           {
             label: 'Watts',
@@ -44,7 +44,7 @@ function ProductionUI(props) {
             label: 'Prediction Watts',
             backgroundColor: 'rgb(30,144,255)',
             borderColor: 'rgb(30,144,255)',
-            data: values.concat(predictionValues),
+            data: values?.concat(predictionValues),
           },
         ],
       })
