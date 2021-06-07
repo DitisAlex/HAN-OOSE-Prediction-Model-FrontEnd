@@ -1,8 +1,6 @@
 import React from 'react'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 
-import Login from './pages/auth/Login'
-import Logout from './pages/auth/Logout'
 import { ProductionPage } from './pages/production/ProductionPage'
 import { ConsumptionPage } from './pages/consumption/ConsumptionPage'
 import Navbar from './components/navBar/Navbar'
@@ -23,7 +21,6 @@ export default class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
-            <Route path="/logout" component={Logout} />
             <Route path="/production" component={ProductionPage} />
             <Route path="/consumption" component={ConsumptionPage} />
           </Switch>
