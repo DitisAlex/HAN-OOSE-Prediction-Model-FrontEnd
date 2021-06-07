@@ -1,34 +1,7 @@
 import * as types from './types'
 
 export const fetchConsumption = () => {
-  let url = '/energy/consumption'
-
-  return (dispatch) => {
-    return fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        var tempObj = {
-          labels: [],
-          values: [],
-        }
-        res.forEach((element) => {
-          tempObj.labels.push(element.labels)
-          tempObj.values.push(element.values)
-        })
-        return dispatch({
-          type: types.FETCHED_CONSUMPTION,
-          payload: tempObj,
-        })
-      })
-  }
-}
-
-export const fetchProduction = () => {
-  let url = '/energy/production'
+  const url = '/energy/consumption'
 
   return (dispatch) =>
     fetch(url, {
@@ -49,6 +22,37 @@ export const fetchProduction = () => {
           tempObj.datetime.push(element.datetime)
         })
         return dispatch({
+          type: types.FETCHED_CONSUMPTION,
+          payload: tempObj,
+        })
+      })
+      .catch((err) => {
+        console.log('Failed to fetch consumption data', err)
+      })
+}
+
+export const fetchProduction = () => {
+  const url = '/energy/production'
+
+  return (dispatch) =>
+    fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        var tempObj = {
+          labels: [],
+          values: [],
+          datetime: [],
+        }
+        res.forEach((datapoint) => {
+          tempObj.labels.push(datapoint.labels)
+          tempObj.values.push(datapoint.values)
+          tempObj.datetime.push(datapoint.datetime)
+        })
+        return dispatch({
           type: types.FETCHED_PRODUCTION,
           payload: tempObj,
         })
@@ -59,7 +63,7 @@ export const fetchProduction = () => {
 }
 
 export const fetchPrediction = (hours) => {
-  let url = "/prediction/" + hours;
+  const url = `/prediction/${hours}`
 
   return (dispatch) =>
     fetch(url, {

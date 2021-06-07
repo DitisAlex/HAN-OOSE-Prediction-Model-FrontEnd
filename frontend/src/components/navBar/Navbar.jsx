@@ -5,14 +5,13 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap'
 
-export default function NavbarComponent(props) {
+export default function Navbar(props) {
   return (
     <Navbar color="dark" dark className="navbar-expand">
       <NavbarBrand>Prediction Model</NavbarBrand>
@@ -29,7 +28,7 @@ export default function NavbarComponent(props) {
           </DropdownToggle>
 
           <DropdownMenu right>
-          <Link to="/consumption" className="text-light" id="consumptionPage">
+            <Link to="/consumption" className="text-light" id="consumptionPage">
               <DropdownItem>EV power</DropdownItem>
             </Link>
             <Link to="/production" className="text-light" id="productionPage">
@@ -37,11 +36,6 @@ export default function NavbarComponent(props) {
             </Link>
           </DropdownMenu>
         </UncontrolledDropdown>
-        <NavItem className="ml-auto">
-          <Link to="/login" className="text-light">
-            Login
-          </Link>
-        </NavItem>
       </Nav>
     </Navbar>
   )

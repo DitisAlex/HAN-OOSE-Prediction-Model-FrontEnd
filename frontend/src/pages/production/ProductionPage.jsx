@@ -29,23 +29,26 @@ function ProductionUI(props) {
     setPredictionValues(props.predictionValues)
   }, [props.predictionLabels, props.predictionValues])
 
+  const pink = 'rgb(255, 99, 132)'
+  const blue = 'rgb(30,144,255)'
+
   useEffect(() => {
     if (predictionToggler && predictionLabels !== undefined) {
       setData({
-        labels: labels.concat(predictionLabels),
+        labels: labels?.concat(predictionLabels),
         datasets: [
           {
             label: 'Watts',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: values
+            backgroundColor: pink,
+            borderColor: pink,
+            data: values,
           },
           {
             label: 'Prediction Watts',
-            backgroundColor: 'rgb(30,144,255)',
-            borderColor: 'rgb(30,144,255)',
+            backgroundColor: blue,
+            borderColor: blue,
             data: values.concat(predictionValues),
-          }
+          },
         ],
       })
     } else {
@@ -54,8 +57,8 @@ function ProductionUI(props) {
         datasets: [
           {
             label: 'Watts',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: pink,
+            borderColor: pink,
             data: values,
           },
         ],
@@ -83,9 +86,7 @@ function ProductionUI(props) {
           <div>
             {(() => {
               if (data.labels == undefined || data.labels.length < 1) {
-                return (
-                  <div className="w-75 mx-auto">No data found</div>
-                )
+                return <div className="w-75 mx-auto">No data found</div>
               }
             })()}
           </div>
@@ -117,7 +118,9 @@ function ProductionUI(props) {
               <option value="1">1 Hour</option>
               <option value="2">2 Hours</option>
               <option value="3">3 Hours</option>
-              <option selected value="4">4 Hours</option>
+              <option selected value="4">
+                4 Hours
+              </option>
             </CustomInput>
           </div>
         </div>
@@ -128,15 +131,15 @@ function ProductionUI(props) {
 }
 
 const mapStateToProps = (state) => ({
-  labels: state.graphs.selectedProduction.labels,
-  values: state.graphs.selectedProduction.values,
+  labels: state.graphs.production.labels,
+  values: state.graphs.production.values,
   predictionValues: state.graphs.prediction.values,
-  predictionLabels: state.graphs.prediction.labels
+  predictionLabels: state.graphs.prediction.labels,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProduction: () => dispatch(fetchProduction()),
-  fetchPrediction: (hours) => dispatch(fetchPrediction(hours))
+  fetchPrediction: (hours) => dispatch(fetchPrediction(hours)),
 })
 
 export const ProductionPage = connect(
