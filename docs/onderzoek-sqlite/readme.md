@@ -1,4 +1,4 @@
-# Database
+# SQLite
 
 For the web interface we are using SQLite database for all information. SQLite is an open-source, zero-configuration, self-contained, stand-alone, transaction relational database engine designed to be embedded into an application. Currently there is a SQLite database available on the Raspberry Pi with the grid and EV data, this data is periodically copied in to the database of our project because changing the code on the Raspberry Pi is outside of this project.
 
@@ -12,9 +12,26 @@ There are several seed files available in the `backend/db/seed` folder:
 
 In the files you can uncomment certain lines in the first function in order to skip certain tables if you want to. These files can also be called from scripts or other Python files (for example, for tests).
 
+The main questions is how to implement SQLite in our program, a sub question is how does SQLite work and how is it implemented in a Python application. I have done some literally and lab research to find out the questions named above.
+
 ## Installation
 
-Installing SQLite is quite simple since there is no need for a seperate process in the background to run the program, everything is simpely read from the `.db` file. The site [SQLite Tutorial](https://www.sqlitetutorial.net/) has some simple tutorials for installing and using SQLite.
+Installing SQLite is quite simple since there is no need for a seperate process in the background to run the program, everything is simpely read from the `.db` file. The site [SQLite Tutorial](https://www.sqlitetutorial.net/) has some simple tutorials for installing and using SQLite. You can install by downloading a SQLite reader, such as SQL Studio. In order to access it using code you can use the build in flask sqlite3 method. Underneath is a small sample of how to do that (from the seed.py file):
+
+```python
+import sqlite3
+
+con = sqlite3.connect('../database.db')
+
+cur = con.cursor()
+con.execute("DROP TABLE IF EXISTS users")
+
+con.commit()
+```
+
+`con` is the connection to the databaser, `cur` is a cursor which is the database object on which you do the actions inside python. When you do `commit()` it saves it into the database.
+
+An issue with SQLite are that it doesn't allow the database to process multiple queries at a time since it is just a file and not a service. This should however not be a problem for us since we use a single threaded application and don't have any users-input that needs to be put into the database.
 
 ## Schema
 
@@ -77,3 +94,7 @@ The prediction data table stores the prediction made by the AI model. The `predi
 | predicted_on   | text      | :white_check_mark: |
 | predicted_date | text      | :white_check_mark: |
 | prediction     | real      | :white_check_mark: |
+
+## Conclusion
+
+In conclusing, SQLite is a really light weight SQL database that uses almost the exact same commands as SQL. Using Python with SQLite is really easy and doesn't even require installing anything more than Flask itself. There are some issues like commiting multiple things at once, which is impossible but for our single threaded application that shouldn't be a big issue.
